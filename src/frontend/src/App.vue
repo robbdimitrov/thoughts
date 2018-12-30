@@ -16,5 +16,13 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~bulma/bulma.sass"
+@import "~bulma/bulma.sass";
+
+html {
+  background: #e6ecf0;
+}
+
+.background {
+  background: white;
+}
 </style>

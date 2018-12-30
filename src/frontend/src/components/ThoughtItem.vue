@@ -1,39 +1,48 @@
 <template>
-  <div class="content">
-    <div class="header">
-      <div class="profile-action">
-        <img :src="avatar" class="avatar" />
-        <p class="name">John Doe</p>
-        <p class="username">johndoe</p>
-      </div>
-      <p class="time">3 hours ago</p>
-    </div>
+  <article class="media">
+    <figure class="image is-64x64 media-left">
+      <img src="https://bulma.io/images/placeholders/64x64.png"
+        class="is-rounded" />
+    </figure>
 
-    <div class="text-container">
+    <div class="media-content">
+      <p class="profile-action">
+        <strong class="name">John Doe</strong>
+        <small class="username">@johndoe</small>
+        <small class="time">3h</small>
+      </p>
       <p class="text">Hello beautiful world! My first post!</p>
-    </div>
 
-    <div class="footer">
-      <button class="like-action">
-        <span>Like</span>
-        <span>2</span>
-      </button>
-      <button class="retweet-action">
-        <span>Like</span>
-        <span>3</span>
-      </button>
+      <div class="level is-mobile">
+        <div class="level-left">
+          <a class="button level-item">
+            <span class="icon">
+              <i class="fas fa-retweet"></i>
+            </span>
+            <span>2</span>
+          </a>
+          <a class="button level-item">
+            <span class="icon">
+              <i class="fas fa-heart"></i>
+            </span>
+            <span>3</span>
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
+  </article>
 </template>
 
-<script>
-</script>
+<style lang="scss" scoped>
+.time::before {
+  content: "\00b7 ";
+}
 
-<style scoped>
-.avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: lightgray;
+.button {
+  border: 0;
+}
+
+.name::after, .username::after {
+  content: " ";
 }
 </style>
