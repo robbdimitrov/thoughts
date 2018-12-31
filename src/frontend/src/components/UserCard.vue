@@ -28,6 +28,8 @@
 
 <style lang="scss" scoped>
 $padding: 10px;
+$avatar-width: 64px;
+$cover-height: 100px;
 
 $text-weight-light: 300;
 $text-weight-regular: 400;
@@ -35,7 +37,7 @@ $text-weight-semibold: 500;
 $text-weight-bold: 700;
 
 .cover {
-  height: 100px;
+  height: $cover-height;
   background: lightblue;
 }
 
@@ -44,13 +46,13 @@ $text-weight-bold: 700;
   overflow: auto;
 }
 
-.content {
+.content, .counters, .counter {
   display: flex;
 }
 
 .avatar {
-  width: 64px;
-  height: 64px;
+  width: $avatar-width;
+  height: $avatar-width;
   margin: $padding;
   border-radius: 50%;
   margin-top: -20px;
@@ -62,7 +64,11 @@ $text-weight-bold: 700;
   margin-left: 0;
 }
 
-.title {
+p {
+  margin: 0;
+}
+
+.title, .counter-value {
   font-weight: $text-weight-semibold;
 }
 
@@ -71,31 +77,18 @@ $text-weight-bold: 700;
   margin-top: 0.1em;
 }
 
-p {
-  margin: 0;
-}
-
 .counters {
-  display: flex;
   justify-content: space-evenly;
   margin: $padding 0 $padding;
 }
 
 .counter {
-  display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-.counter-label {
-  font-size: 0.875em;
-}
-
-.counter-label {
+.counter-label, .subtitle {
   font-weight: $text-weight-light;
-}
-
-.counter-value {
-  font-weight: $text-weight-semibold;
+  font-size: 0.875em;
 }
 </style>
