@@ -1,25 +1,29 @@
 <template>
-  <div class="container">
+  <div class="container flex vertical">
     <div class="cover"></div>
-    <div class="content">
-      <img class="avatar" src="https://bulma.io/images/placeholders/96x96.png"
-        alt="Placeholder image" />
+
+    <div class="content flex horizontal">
+      <img class="avatar"
+        src="https://bulma.io/images/placeholders/96x96.png" />
       <div class="labels">
-        <p class="title">John Smith</p>
-        <p class="subtitle">@johnsmith</p>
+        <p class="title semibold">John Smith</p>
+        <p class="subtitle light">@johnsmith</p>
       </div>
     </div>
-    <div class="counters">
-      <div class="counter">
-        <span class="counter-label">Thoughts</span>
+
+    <div class="counters flex horizontal">
+      <div class="counter flex vertical">
+        <span class="counter-label light">Thoughts</span>
         <span class="counter-value">2</span>
       </div>
-      <div class="counter">
-        <span class="counter-label">Following</span>
+
+      <div class="counter flex vertical">
+        <span class="counter-label light">Following</span>
         <span class="counter-value">70</span>
       </div>
-      <div class="counter">
-        <span class="counter-label">Followers</span>
+
+      <div class="counter flex vertical">
+        <span class="counter-label light">Followers</span>
         <span class="counter-value">160</span>
       </div>
     </div>
@@ -43,11 +47,26 @@ $text-weight-bold: 700;
 
 .container {
   background: white;
-  overflow: auto;
 }
 
-.content, .counters, .counter {
+.flex {
   display: flex;
+}
+
+.flex.horizontal {
+  flex-direction: row;
+}
+
+.flex.vertical {
+  flex-direction: column;
+}
+
+strong, .semibold {
+  font-weight: $text-weight-semibold;
+}
+
+small, .light {
+  font-weight: $text-weight-light;
 }
 
 .avatar {
@@ -64,31 +83,24 @@ $text-weight-bold: 700;
   margin-left: 0;
 }
 
-p {
+.title {
   margin: 0;
 }
 
-.title, .counter-value {
-  font-weight: $text-weight-semibold;
-}
-
 .subtitle {
-  font-weight: $text-weight-light;
   margin-top: 0.1em;
 }
 
 .counters {
   justify-content: space-evenly;
-  margin: $padding 0 $padding;
+  margin: 0 0 $padding;
 }
 
 .counter {
-  flex-direction: column;
   text-align: center;
 }
 
 .counter-label, .subtitle {
-  font-weight: $text-weight-light;
   font-size: 0.875em;
 }
 </style>

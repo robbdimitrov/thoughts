@@ -1,9 +1,7 @@
 <template>
   <div class="container">
-    <div>
-      <user-card class="user-info"></user-card>
-      <thought-list class="list-view"></thought-list>
-    </div>
+    <user-card class="user-info"></user-card>
+    <thought-list class="list-view"></thought-list>
   </div>
 </template>
 
@@ -22,18 +20,34 @@ export default {
 
 <style lang="scss" scoped>
 $list-width: 512px;
+$card-width: 280px;
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
 
 .user-info {
-  width: 280px;
+  width: $card-width;
+  margin-right: 10px;
+  display: none;
 }
 
 .list-view {
   width: 100%;
+  display: block;
 }
 
-@media screen and (min-width: $list-width) {
+@media screen and (min-width: $list-width + $card-width + 20px) {
+  .user-info {
+    display: block;
+  }
+}
+
+@media screen and (min-width: $list-width + 20px) {
   .list-view {
-    widows: $list-width;
+    width: $list-width;
   }
 }
 </style>
