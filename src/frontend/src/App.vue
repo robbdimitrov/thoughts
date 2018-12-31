@@ -15,14 +15,10 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import "~bulma/bulma.sass";
-
-html {
+<style>
+body {
+  font-family: 'Roboto', sans-serif;
   background: #e6ecf0;
 }
-
-.background {
-  background: white;
-}
 </style>
+

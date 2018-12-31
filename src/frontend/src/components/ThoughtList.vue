@@ -1,5 +1,5 @@
 <template>
-  <div class="background">
+  <div class="container">
     <thought-item></thought-item>
     <thought-item></thought-item>
     <thought-item></thought-item>
@@ -15,3 +15,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.container {
+  background: white;
+}
+</style>
