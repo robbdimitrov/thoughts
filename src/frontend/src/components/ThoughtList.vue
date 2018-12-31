@@ -25,4 +25,7 @@ article {
   border-bottom: 1px solid #e6ecf0;
 }
 
+article:last-child {
+  border-bottom: none;
+}
 </style>
