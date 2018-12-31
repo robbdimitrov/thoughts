@@ -20,4 +20,9 @@ export default {
 .container {
   background: white;
 }
+
+article {
+  border-bottom: 1px solid #e6ecf0;
+}
+
 </style>
