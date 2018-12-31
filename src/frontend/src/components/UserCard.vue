@@ -82,8 +82,8 @@ p {
 }
 
 .counter {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
