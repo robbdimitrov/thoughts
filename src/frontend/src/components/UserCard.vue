@@ -33,7 +33,7 @@
 <style lang="scss" scoped>
 $padding: 10px;
 $avatar-width: 64px;
-$cover-height: 100px;
+$cover-height: 80px;
 
 $text-weight-light: 300;
 $text-weight-regular: 400;

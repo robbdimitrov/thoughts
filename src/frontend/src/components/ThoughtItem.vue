@@ -1,13 +1,14 @@
 <template>
   <article class="container">
-    <div class="thought-context">
+    <div class="context">
       <i class="context-icon fas fa-retweet"></i>
       <span class="context-label">Jonathan Key retweeted</span>
     </div>
 
-    <div class="thought-content">
+    <div class="wrapper">
       <img class="avatar"
         src="https://bulma.io/images/placeholders/96x96.png" />
+
       <div class="content">
         <p class="profile-action">
           <strong class="name">John Doe</strong>
@@ -17,7 +18,7 @@
 
         <p class="text">Hello beautiful world! My first post!</p>
 
-        <div class="actions">
+        <div class="buttons">
           <button class="retweet-button">
             <i class="button-icon fas fa-retweet"></i>
             <span class="button-label">2</span>
@@ -30,13 +31,17 @@
         </div>
       </div>
     </div>
-
   </article>
 </template>
 
 <style lang="scss" scoped>
-.thought-content, .actions, button {
+.wrapper, .buttons, button {
   display: flex;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
 }
 
 .context-icon {
@@ -45,7 +50,7 @@
   margin-right: 10px;
 }
 
-.thought-context {
+.context {
   margin-top: 10px;
   color: gray;
   font-size: 0.8em;
@@ -64,7 +69,7 @@
   margin: 10px 0 0 0;
 }
 
-.actions {
+.buttons {
   margin: 10px 0;
 }
 

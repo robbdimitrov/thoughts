@@ -1,7 +1,9 @@
 <template>
   <div class="container">
-    <user-card class="user-info"></user-card>
-    <thought-list class="list-view"></thought-list>
+    <user-card class="user-card"></user-card>
+    <div class="content">
+      <thought-list class="content-list"></thought-list>
+    </div>
   </div>
 </template>
 
@@ -28,25 +30,28 @@ $card-width: 280px;
   justify-content: center;
 }
 
-.user-info {
+.user-card {
   width: $card-width;
   margin-right: 10px;
   display: none;
 }
 
-.list-view {
+.content {
   width: 100%;
+}
+
+.content-list {
   display: block;
 }
 
 @media screen and (min-width: $list-width + $card-width + 20px) {
-  .user-info {
+  .user-card {
     display: block;
   }
 }
 
 @media screen and (min-width: $list-width + 20px) {
-  .list-view {
+  .content {
     width: $list-width;
   }
 }
