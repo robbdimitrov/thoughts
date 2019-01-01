@@ -1,0 +1,39 @@
+@import 'colors';
+@import 'mixins';
+@import 'variables';
+
+.button {
+  @include button-background($button-background-color);
+}
+
+.outline-button {
+  @include button-outline($button-background-color,
+    $primary-text-color, $button-border-width);
+}
+
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button, .outline-button {
+  padding: 5px;
+}
+
+.image-button {
+  opacity: 0.4;
+}
+
+.image-button.active {
+  opacity: 0.8;
+}
+
+.image-button, .button, .outline-button {
+  &:disabled {
+    opacity: 0.6;
+  }
+}
+
+.round-corners {
+  border-radius: $button-border-radius;
+}

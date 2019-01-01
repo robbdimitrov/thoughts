@@ -15,11 +15,6 @@ export default {
 };
 </script>
 
-<style>
-body {
-  font-family: 'Roboto', sans-serif;
-  background: #e6ecf0;
-  margin: 0;
-}
+<style lang="scss">
+@import 'styles/components';
 </style>
-
