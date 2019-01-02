@@ -16,5 +16,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'styles/components';
+@import 'styles/main';
+
+body {
+  background: $background-color;
+  color: $primary-text-color;
+}
 </style>

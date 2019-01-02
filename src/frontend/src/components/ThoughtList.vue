@@ -18,6 +18,7 @@ export default {
 
 <style scoped>
 .container {
+  flex-direction: column;
   background: white;
 }
 

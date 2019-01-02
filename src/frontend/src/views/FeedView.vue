@@ -24,6 +24,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../styles/variables";
+
 $list-width: 512px;
 $card-width: 280px;
 
@@ -35,7 +37,7 @@ $card-width: 280px;
 
 .user-card {
   width: $card-width;
-  margin-right: 10px;
+  margin-right: 2 * $padding;
   display: none;
 }
 
@@ -43,17 +45,13 @@ $card-width: 280px;
   width: 100%;
 }
 
-.content-list {
-  display: block;
-}
-
-@media screen and (min-width: $list-width + $card-width + 20px) {
+@media screen and (min-width: $break-lg) {
   .user-card {
     display: block;
   }
 }
 
-@media screen and (min-width: $list-width + 20px) {
+@media screen and (min-width: $break-sm) {
   .content {
     width: $list-width;
   }

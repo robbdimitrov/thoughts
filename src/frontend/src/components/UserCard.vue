@@ -1,28 +1,28 @@
 <template>
-  <div class="container flex vertical">
+  <div class="container">
     <div class="cover"></div>
 
-    <div class="content flex horizontal">
+    <div class="content">
       <img class="avatar"
-        src="https://bulma.io/images/placeholders/96x96.png" />
+        src="https://via.placeholder.com/300.png" />
       <div class="labels">
         <p class="title semibold">John Smith</p>
         <p class="subtitle light">@johnsmith</p>
       </div>
     </div>
 
-    <div class="counters flex horizontal">
-      <div class="counter flex vertical">
+    <div class="counters">
+      <div class="counter">
         <span class="counter-label light">Thoughts</span>
         <span class="counter-value">2</span>
       </div>
 
-      <div class="counter flex vertical">
+      <div class="counter">
         <span class="counter-label light">Following</span>
         <span class="counter-value">70</span>
       </div>
 
-      <div class="counter flex vertical">
+      <div class="counter">
         <span class="counter-label light">Followers</span>
         <span class="counter-value">160</span>
       </div>
@@ -31,50 +31,26 @@
 </template>
 
 <style lang="scss" scoped>
-$padding: 10px;
-$avatar-width: 64px;
-$cover-height: 80px;
-
-$text-weight-light: 300;
-$text-weight-regular: 400;
-$text-weight-semibold: 500;
-$text-weight-bold: 700;
+@import "../styles/variables";
+@import "../styles/helpers";
 
 .cover {
   height: $cover-height;
   background: lightblue;
 }
 
+.content {
+  display: flex;
+  flex-direction: row;
+}
+
 .container {
   background: white;
 }
 
-.flex {
-  display: flex;
-}
-
-.flex.horizontal {
-  flex-direction: row;
-}
-
-.flex.vertical {
-  flex-direction: column;
-}
-
-strong, .semibold {
-  font-weight: $text-weight-semibold;
-}
-
-small, .light {
-  font-weight: $text-weight-light;
-}
-
 .avatar {
-  width: $avatar-width;
-  height: $avatar-width;
   margin: $padding;
-  border-radius: 50%;
-  margin-top: -20px;
+  margin-top: -2 * $padding;
   border: 2px solid white;
 }
 
@@ -88,19 +64,23 @@ small, .light {
 }
 
 .subtitle {
-  margin-top: 0.1em;
+  margin-top: rem(2);
 }
 
 .counters {
+  display: flex;
+  flex-direction: row;
   justify-content: space-evenly;
   margin: 0 0 $padding;
 }
 
 .counter {
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
 .counter-label, .subtitle {
-  font-size: 0.875em;
+  font-size: rem(14);
 }
 </style>

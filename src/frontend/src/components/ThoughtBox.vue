@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <img class="avatar"
-      src="https://bulma.io/images/placeholders/96x96.png" />
+      src="https://via.placeholder.com/300.png" />
     <form class="input">
       <input type="text"
         placeholder="What are you thinking?"
@@ -21,12 +21,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$avatar-width: 32px;
+@import "../styles/variables";
+@import "../styles/colors";
 
 .container {
-  // display: flex;
+  display: flex;
   background: #EAEBEB;
-  padding: 12px;
+  padding: $padding;
 }
 
 form {
@@ -46,10 +47,10 @@ form {
 }
 
 .avatar {
-  width: $avatar-width;
-  height: $avatar-width;
+  width: $avatar-width-xs;
+  height: $avatar-width-xs;
   border-radius: 50%;
-  margin-left: 48px - $avatar-width;
-  margin-right: 10px;
+  margin-left: $avatar-width-sm - $avatar-width-xs;
+  margin-right: $padding;
 }
 </style>

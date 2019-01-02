@@ -7,7 +7,7 @@
 
     <div class="wrapper">
       <img class="avatar"
-        src="https://bulma.io/images/placeholders/96x96.png" />
+        src="https://via.placeholder.com/300.png" />
 
       <div class="content">
         <p class="profile-action">
@@ -35,53 +35,64 @@
 </template>
 
 <style lang="scss" scoped>
-.wrapper, .buttons, button {
-  display: flex;
-}
+@import "../styles/variables";
+@import "../styles/helpers";
+@import "../styles/fonts";
 
-.container {
+$context-icon-width: 16px;
+
+.wrapper {
   display: flex;
-  flex-direction: column;
 }
 
 .context-icon {
-  margin-left: (48px + 10px) - 16px;
-  width: 16px;
-  margin-right: 10px;
+  margin-left: ($avatar-width-sm + $padding) - $context-icon-width;
+  width: $context-icon-width;
+  margin-right: $padding;
 }
 
 .context {
-  margin-top: 10px;
+  margin-top: $padding;
   color: gray;
-  font-size: 0.8em;
-  font-weight: 400;
+  font-size: rem(12);
+  font-weight: $font-weight-regular;
+}
+
+.buttons > button {
+  display: flex;
+  align-items: center;
+  border: 0;
+  padding: 0;
+  height: 20px;
 }
 
 .profile-action {
-  margin: 10px 0 0;
+  margin: $padding 0 0;
 }
 
 .button-label {
-  margin-left: 0.5em;
+  margin-left: 5px;
+  font-size: rem(12);
 }
 
 .text {
-  margin: 10px 0 0 0;
+  margin: $padding 0 0 0;
 }
 
 .buttons {
-  margin: 10px 0;
+  display: flex;
+  margin: $padding 0;
 }
 
 .avatar {
-  width: 48px;
-  height: 48px;
+  width: $avatar-width-sm;
+  height: $avatar-width-sm;
   border-radius: 50%;
-  padding: 10px;
+  padding: $padding;
 }
 
 .button-icon {
-  width: 15px;
+  width: 20px;
   height: 15px;
 }
 
@@ -89,14 +100,8 @@
   content: "\00b7 ";
 }
 
-button {
-  border: 0;
-  padding: 0;
-  height: 20px;
-}
-
 .like-button {
-  margin-left: 20px;
+  margin-left: 2 * $padding;
 }
 
 .name::after, .username::after {
