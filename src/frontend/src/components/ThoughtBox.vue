@@ -24,6 +24,8 @@ export default {
 @import "../styles/variables";
 @import "../styles/colors";
 
+$avatar-padding: $avatar-width-sm - $avatar-width-xs + $padding;
+
 .container {
   display: flex;
   align-items: flex-start;
@@ -56,9 +58,10 @@ form {
 }
 
 .avatar {
+  flex-shrink: 0;
   width: $avatar-width-xs;
   height: $avatar-width-xs;
   margin: $padding;
-  margin-left: $avatar-width-sm - $avatar-width-xs + $padding;
+  margin-left: $avatar-padding;
 }
 </style>
