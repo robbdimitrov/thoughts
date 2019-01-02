@@ -16,13 +16,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .container {
   flex-direction: column;
   background: white;
 }
 
-article {
+.container > article {
+  width: 100%;
   border-bottom: 1px solid #e6ecf0;
 }
 

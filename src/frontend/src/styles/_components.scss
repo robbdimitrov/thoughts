@@ -6,3 +6,22 @@
   height: $avatar-width;
   border-radius: 50%;
 }
+
+.button {
+  background: $button-background-color;
+  text-decoration: none;
+  height: 32px;
+  padding: 0 10px;
+  font-size: rem(15);
+  color: white;
+  border-radius: 16px;
+  &:not(:disabled) {
+    &:hover, &:focus {
+      background: darken($button-background-color,8%);
+      transition: all 0.3s ease;
+    }
+    &:active {
+      background: darken($button-background-color, 25%);
+    }
+  }
+}

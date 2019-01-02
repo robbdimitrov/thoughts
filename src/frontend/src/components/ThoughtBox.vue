@@ -3,13 +3,13 @@
     <img class="avatar"
       src="https://via.placeholder.com/300.png" />
     <form class="input">
-      <input type="text"
+      <textarea type="text"
         placeholder="What are you thinking?"
         id="thought"
         name="thought"
         class="form-input"
-        required>
-      <button class="form-button">Submit</button>
+        required />
+      <button class="button form-button">Submit</button>
     </form>
   </div>
 </template>
@@ -26,31 +26,39 @@ export default {
 
 .container {
   display: flex;
+  align-items: flex-start;
   background: #EAEBEB;
-  padding: $padding;
 }
 
 form {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-}
-
-.form-button {
-  display: none;
+  margin: $padding;
+  margin-left: 0;
 }
 
 .form-input {
-  padding: 8px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 6px;
   border-radius: 8px;
   border: 1px solid black;
+  resize: none;
+  height: 80px;
+}
+
+.form-button {
+  margin-top: $padding;
 }
 
 .avatar {
   width: $avatar-width-xs;
   height: $avatar-width-xs;
-  border-radius: 50%;
-  margin-left: $avatar-width-sm - $avatar-width-xs;
-  margin-right: $padding;
+  margin: $padding;
+  margin-left: $avatar-width-sm - $avatar-width-xs + $padding;
 }
 </style>

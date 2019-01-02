@@ -33,6 +33,7 @@
 <style lang="scss" scoped>
 @import "../styles/variables";
 @import "../styles/helpers";
+@import "../styles/fonts";
 
 .cover {
   height: $cover-height;
@@ -64,6 +65,7 @@
 }
 
 .subtitle {
+  font-size: rem(14);
   margin-top: rem(2);
 }
 
@@ -80,7 +82,11 @@
   text-align: center;
 }
 
-.counter-label, .subtitle {
+.counter-label {
   font-size: rem(14);
+}
+
+.counter-value {
+  font-weight: $font-weight-semibold;
 }
 </style>
