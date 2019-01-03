@@ -30,6 +30,7 @@ $list-width: 512px;
 $card-width: 280px;
 
 .container {
+  margin-top: $padding;
   display: flex;
   align-items: flex-start;
   justify-content: center;
