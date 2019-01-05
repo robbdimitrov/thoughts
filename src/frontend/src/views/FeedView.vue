@@ -26,7 +26,6 @@ export default {
 <style lang="scss" scoped>
 @import "../styles/variables";
 
-$list-width: 512px;
 $card-width: 280px;
 
 .container {
@@ -43,7 +42,7 @@ $card-width: 280px;
 }
 
 .content {
-  width: 100%;
+  width: $item-list-width;
 }
 
 @media screen and (max-width: $break-lg) {
@@ -52,9 +51,9 @@ $card-width: 280px;
   }
 }
 
-@media screen and (min-width: $break-sm) {
+@media screen and (max-width: $break-sm) {
   .content {
-    width: $list-width;
+    width: 100%;
   }
 }
 </style>

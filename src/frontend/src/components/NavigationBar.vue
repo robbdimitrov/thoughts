@@ -1,5 +1,5 @@
 <template>
-  <header class="container">
+  <header class="container bottom-shadow">
     <div class="content">
       <div class="left-items">
         <router-link to="/feed" class="home-button nav-button">
@@ -61,7 +61,6 @@ $active-nav-button-color: darken($active-color, 25%);
   align-items: center;
   background: white;
   height: $bar-height;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
 
 .content {
