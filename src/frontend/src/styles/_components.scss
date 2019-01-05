@@ -1,6 +1,8 @@
 @import 'colors';
 @import 'variables';
 
+$button-background-color: $active-color;
+
 .avatar {
   width: $avatar-width;
   height: $avatar-width;

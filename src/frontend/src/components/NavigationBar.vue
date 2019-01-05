@@ -1,33 +1,35 @@
 <template>
-  <div class="container">
-    <div class="left-items">
-      <button class="home-button nav-button">
-        <i class="nav-button-icon fas fa-home"></i>
-        <span class="nav-button-label">Home</span>
-      </button>
+  <header class="container">
+    <div class="content">
+      <div class="left-items">
+        <router-link to="/feed" class="home-button nav-button">
+          <i class="nav-button-icon fas fa-home"></i>
+          <span class="nav-button-label">Home</span>
+        </router-link>
 
-      <button class="search-button nav-button">
-        <i class="nav-button-icon fas fa-search"></i>
-        <span class="nav-button-label">Search</span>
-      </button>
+        <router-link to="/search" class="search-button nav-button">
+          <i class="nav-button-icon fas fa-search"></i>
+          <span class="nav-button-label">Search</span>
+        </router-link>
+      </div>
+
+      <i class="icon fas fa-brain"></i>
+
+      <div class="right-items">
+        <search-bar class="search-bar"></search-bar>
+
+        <router-link to="/user" class="profile-button">
+          <img class="profile-button-image"
+            src="https://via.placeholder.com/300.png"
+            alt="Profile" />
+        </router-link>
+
+        <button class="button create-button">
+          Create
+        </button>
+      </div>
     </div>
-
-    <i class="icon fas fa-brain"></i>
-
-    <div class="right-items">
-      <search-bar class="search-bar"></search-bar>
-
-      <button class="profile-button">
-        <img class="profile-button-image"
-          src="https://via.placeholder.com/300.png"
-          alt="Profile" />
-      </button>
-
-      <button class="button create-button">
-        Create
-      </button>
-    </div>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -51,22 +53,46 @@ $icon-width: 30px;
 $icon-font-size: 21px;
 $bar-height: 46px;
 
+$active-nav-button-color: darken($active-color, 25%);
+
 .container {
   display: flex;
   flex-direction: row;
   align-items: center;
   background: white;
   height: $bar-height;
-  justify-content: space-between;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
 
+.content {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 860px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  justify-content: space-between;
+}
+
 .nav-button {
-  height: $icon-width;
+  text-decoration: none;
+  color: $primary-text-color;
+  height: 100%;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.nav-button.router-link-active {
+  color: $active-nav-button-color;
+  border-bottom: 2px solid $active-nav-button-color
 }
 
 .left-items {
-  margin-left: 5%;
+  height: 100%;
+  display: flex;
 }
 
 .nav-button-icon {
@@ -89,7 +115,7 @@ $bar-height: 46px;
   left: 50%;
   position: absolute;
   margin-left: -($icon-width / 2);
-  color: #1da1f2;
+  color: $active-color;
 }
 
 .profile-button {
@@ -106,7 +132,6 @@ $bar-height: 46px;
 .right-items {
   display: flex;
   align-items: center;
-  margin-right: 5%;
 }
 
 .create-button {
@@ -128,7 +153,7 @@ $bar-height: 46px;
 
 @media screen and (min-width: $break-md) {
   .search-button {
-    display: none;
+    // display: none;
   }
 }
 </style>

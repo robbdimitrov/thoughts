@@ -1,18 +1,16 @@
 <template>
   <div id="app">
-    <navigation-bar class="nav"></navigation-bar>
-    <feed-view></feed-view>
+    <navigation-bar></navigation-bar>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import FeedView from './views/FeedView.vue';
-import NavigationBar from './components/NavigationBar.vue'
+import NavigationBar from './components/NavigationBar.vue';
 
 export default {
   name: 'app',
   components: {
-    FeedView,
     NavigationBar
   }
 };
