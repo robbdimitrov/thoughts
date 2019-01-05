@@ -39,16 +39,16 @@ $card-width: 280px;
 .user-card {
   width: $card-width;
   margin-right: 2 * $padding;
-  display: none;
+  display: block;
 }
 
 .content {
   width: 100%;
 }
 
-@media screen and (min-width: $break-lg) {
+@media screen and (max-width: $break-lg) {
   .user-card {
-    display: block;
+    display: none;
   }
 }
 

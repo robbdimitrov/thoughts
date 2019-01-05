@@ -9,7 +9,9 @@
         name="thought"
         class="form-input"
         required />
-      <button class="button form-button">Submit</button>
+      <button class="button form-button">
+        Create
+      </button>
     </form>
   </div>
 </template>
