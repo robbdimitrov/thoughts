@@ -153,7 +153,7 @@ $active-nav-button-color: darken($active-color, 25%);
 
 @media screen and (min-width: $break-md) {
   .search-button {
-    // display: none;
+    display: none;
   }
 }
 </style>
