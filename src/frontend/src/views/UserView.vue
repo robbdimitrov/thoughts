@@ -1,36 +1,40 @@
 <template>
   <div class="container">
-    <img class="avatar"
-      src="https://via.placeholder.com/300.png" />
+    <div class="header">
+      <div class="cover"></div>
 
-    <div class="cover"></div>
+      <img class="avatar"
+        src="https://via.placeholder.com/300.png" />
+    </div>
 
-    <div class="control-bar bottom-shadow">
-      <nav class="elements">
-        <div class="element">
-          <span class="counter-label light">Thoughts</span>
-          <span class="counter-value">140</span>
-        </div>
+    <div class="control-bar-container bottom-shadow">
+      <div class="control-bar">
+        <nav class="counters">
+          <div class="counter active">
+            <span class="counter-label">Thoughts</span>
+            <span class="counter-value">140</span>
+          </div>
 
-        <div class="element">
-          <span class="counter-label light">Following</span>
-          <span class="counter-value">70</span>
-        </div>
+          <div class="counter">
+            <span class="counter-label">Following</span>
+            <span class="counter-value">70</span>
+          </div>
 
-        <div class="element">
-          <span class="counter-label light">Followers</span>
-          <span class="counter-value">250</span>
-        </div>
+          <div class="counter">
+            <span class="counter-label">Followers</span>
+            <span class="counter-value">250</span>
+          </div>
 
-        <div class="element">
-          <span class="counter-label light">Likes</span>
-          <span class="counter-value">98</span>
-        </div>
-      </nav>
+          <div class="counter">
+            <span class="counter-label">Likes</span>
+            <span class="counter-value">98</span>
+          </div>
+        </nav>
 
-      <button class="edit-profile-button">
-        Edit profile
-      </button>
+        <button class="edit-profile-button outline-button">
+          Edit profile
+        </button>
+      </div>
     </div>
 
     <div class="content">
@@ -59,10 +63,25 @@ export default {
 
 <style lang="scss" scoped>
 @import "../styles/variables";
+@import "../styles/fonts";
+@import "../styles/helpers";
+@import "../styles/colors";
 
 .cover {
   background: lightblue;
   height: 150px;
+}
+
+.user-info {
+  margin-top: 80px;
+
+  span {
+    display: block;
+  }
+}
+
+.header {
+  position: relative;
 }
 
 .avatar {
@@ -71,7 +90,7 @@ export default {
   height: 200px;
   position: absolute;
   margin-left: 3%;
-  bottom: 40px;
+  bottom: -80px;
 }
 
 .content {
@@ -82,8 +101,44 @@ export default {
   width: $item-list-width;
 }
 
-.control-bar {
+.control-bar-container {
   background: white;
+}
+
+.control-bar {
+  display: flex;
+  height: 60px;
+  width: 90%;
+  max-width: 860px;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+
+.counters {
+  margin-left: 10%;
+  height: 100%;
+}
+
+.counter {
+  justify-content: center;
+  padding-left: $padding * 1.5;
+  padding-right: $padding * 1.5;
+}
+
+.counter.active {
+  border-bottom: 2px solid $active-nav-button-color;
+}
+
+.counter-label {
+  font-size: rem(14);
+  font-weight: $font-weight-semibold;
+}
+
+.counter-value {
+  font-size: rem(17);
+  font-weight: $font-weight-bold;
 }
 
 @media screen and (min-width: $break-md) {

@@ -70,23 +70,6 @@
 }
 
 .counters {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
   margin: 0 0 $padding;
-}
-
-.counter {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.counter-label {
-  font-size: rem(14);
-}
-
-.counter-value {
-  font-weight: $font-weight-semibold;
 }
 </style>

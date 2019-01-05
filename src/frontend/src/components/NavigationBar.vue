@@ -53,7 +53,7 @@ $icon-width: 30px;
 $icon-font-size: 21px;
 $bar-height: 46px;
 
-$active-nav-button-color: darken($active-color, 25%);
+
 
 .container {
   display: flex;
@@ -86,7 +86,7 @@ $active-nav-button-color: darken($active-color, 25%);
 
 .nav-button.router-link-active {
   color: $active-nav-button-color;
-  border-bottom: 2px solid $active-nav-button-color
+  border-bottom: 2px solid $active-nav-button-color;
 }
 
 .left-items {
