@@ -2,6 +2,24 @@
   <div class="container">
     <div class="cover"></div>
 
+    <div class="user-wrapper">
+      <div class="user">
+        <img class="avatar"
+          src="https://via.placeholder.com/300.png" />
+
+        <div class="texts">
+          <span class="name bold">John Smith</span>
+          <span class="username">@johnsmith</span>
+          <p class="bio">A secret agent, Forbes man of the year</p>
+
+          <div class="join-date">
+            <i class="join-date-icon far fa-calendar-alt"></i>
+            <span class="join-date-text">Joined March 2011</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="control-bar-container bottom-shadow">
       <div class="control-bar">
         <nav class="counters">
@@ -25,30 +43,11 @@
             <span class="counter-value">98</span>
           </div>
         </nav>
-
-        <button class="edit-profile-button outline-button">
-          Edit profile
-        </button>
       </div>
     </div>
 
     <div class="content">
-      <div class="user-info">
-        <img class="avatar"
-          src="https://via.placeholder.com/300.png" />
-
-        <div class="texts">
-          <span class="name bold">John Smith</span>
-          <span class="username">@johnsmith</span>
-          <p class="bio">A secret agent, Forbes man of the year</p>
-          <div class="join-date">
-            <i class="join-date-icon far fa-calendar-alt"></i>
-            <span class="join-date-text">Joined March 2011</span>
-          </div>
-        </div>
-      </div>
-
-      <thought-list class="content-list"></thought-list>
+      <thought-list></thought-list>
     </div>
   </div>
 </template>
@@ -71,39 +70,30 @@ export default {
 @import "../styles/colors";
 
 $cover-height: 100px;
-$avatar-width: 200px;
+$avatar-width: 100px;
+$avatar-width-small: 80px;
 $spacing: $padding * 2;
-
-$counters-left-spacing: $content-secondary-width + 2 * $spacing;
 
 .cover {
   background: lightblue;
   height: $cover-height * 1.5;
 }
 
-.user-info {
-  margin-top: -($avatar-width * 0.9);
-  width: $content-secondary-width;
-  margin-right: $spacing;
-
-  span {
-    display: block;
-  }
-}
-
 .avatar {
+  margin-top: -$avatar-width * 0.8;
   border: 4px solid white;
   width: $avatar-width;
   height: $avatar-width;
 }
 
 .texts {
+  font-size: rem(15);
   margin: $spacing 0;
   color: $primary-text-color;
 }
 
 .name {
-  font-size: rem(20);
+  font-size: rem(21);
   margin-bottom: $padding / 2;
 }
 
@@ -126,14 +116,15 @@ $counters-left-spacing: $content-secondary-width + 2 * $spacing;
   }
 }
 
-.content {
-  display: flex;
-  justify-content: center;
+.edit-profile-button {
+  flex-shrink: 0;
 }
 
-.content-list {
+.content {
   width: $content-primary-width;
   margin: $spacing 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .control-bar-container {
@@ -141,26 +132,24 @@ $counters-left-spacing: $content-secondary-width + 2 * $spacing;
 }
 
 .control-bar {
-  display: flex;
-  height: 60px;
+  height: rem(50);
   width: 90%;
-  max-width: $max-component-width;
-  justify-content: space-between;
+  max-width: $content-primary-width;
   margin-left: auto;
   margin-right: auto;
   align-items: center;
 }
 
 .counters {
-  margin-left: ($counters-left-spacing / $max-component-width) * 100%;
   height: 100%;
   color: $primary-text-color;
+  justify-content: space-around;
 }
 
 .counter {
+  width: 24%;
   justify-content: center;
   padding: 0 $padding;
-  margin-right: $spacing;
 }
 
 .counter.active {
@@ -177,19 +166,22 @@ $counters-left-spacing: $content-secondary-width + 2 * $spacing;
   font-weight: $font-weight-bold;
 }
 
-@media screen and (min-width: $break-md) {
-  .cover {
-    height: $cover-height * 2.4;
-  }
-
-  .user-info {
-    margin-left: $spacing;
-  }
+.user-wrapper {
+  background: white;
 }
 
-@media screen and (min-width: $break-lg) {
-  .cover {
-    height: $cover-height * 3;
+.user {
+  width: 90%;
+  max-width: 320px;
+  margin: 0 auto;
+  align-items: center;
+  text-align: center;
+  background: white;
+  display: flex;
+  flex-direction: column;
+
+  span {
+    display: block;
   }
 }
 
@@ -198,14 +190,17 @@ $counters-left-spacing: $content-secondary-width + 2 * $spacing;
     height: $cover-height;
   }
 
-  .content-list {
-    width: 100%;
+  .avatar {
+    margin-top: -$avatar-width-small * 0.5;
+    width: $avatar-width-small;
+    height: $avatar-width-small;
   }
 }
 
-@media screen and (max-width: $break-md) {
-  .counter.likes {
-    display: none;
+@media screen and (max-width: $max-component-width) {
+  .content {
+    width: 100%;
+    max-width: $content-primary-width;
   }
 }
 </style>
