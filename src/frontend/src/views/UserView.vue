@@ -121,7 +121,8 @@ $spacing: $padding * 2;
 }
 
 .content {
-  width: $content-primary-width;
+  width: 100%;
+  max-width: $content-main-width;
   margin: $spacing 0;
   margin-left: auto;
   margin-right: auto;
@@ -134,7 +135,7 @@ $spacing: $padding * 2;
 .control-bar {
   height: rem(50);
   width: 90%;
-  max-width: $content-primary-width;
+  max-width: $content-main-width;
   margin-left: auto;
   margin-right: auto;
   align-items: center;
@@ -194,13 +195,6 @@ $spacing: $padding * 2;
     margin-top: -$avatar-width-small * 0.5;
     width: $avatar-width-small;
     height: $avatar-width-small;
-  }
-}
-
-@media screen and (max-width: $max-component-width) {
-  .content {
-    width: 100%;
-    max-width: $content-primary-width;
   }
 }
 </style>
