@@ -40,7 +40,7 @@ export default {
   components: {
     SearchBar
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

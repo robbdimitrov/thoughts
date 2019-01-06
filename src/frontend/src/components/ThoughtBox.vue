@@ -19,7 +19,7 @@
 <script scoped>
 export default {
   name: 'thought-box'
-}
+};
 </script>
 
 <style lang="scss" scoped>

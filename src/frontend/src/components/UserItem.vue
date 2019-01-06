@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'user-item'
-}
+};
 </script>
 
 <style lang="scss" scoped>
