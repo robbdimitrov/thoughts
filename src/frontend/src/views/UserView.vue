@@ -1,11 +1,6 @@
 <template>
   <div class="container">
-    <div class="header">
-      <div class="cover"></div>
-
-      <img class="avatar"
-        src="https://via.placeholder.com/300.png" />
-    </div>
+    <div class="cover"></div>
 
     <div class="control-bar-container bottom-shadow">
       <div class="control-bar">
@@ -39,10 +34,18 @@
 
     <div class="content">
       <div class="user-info">
-        <span class="name">John Smith</span>
-        <span class="username">@johnsmith</span>
-        <p class="bio">A secret agent, Forbes man of the year</p>
-        <span class="join-date">Joined March 2011</span>
+        <img class="avatar"
+          src="https://via.placeholder.com/300.png" />
+
+        <div class="texts">
+          <span class="name bold">John Smith</span>
+          <span class="username">@johnsmith</span>
+          <p class="bio">A secret agent, Forbes man of the year</p>
+          <div class="join-date">
+            <i class="join-date-icon far fa-calendar-alt"></i>
+            <span class="join-date-text">Joined March 2011</span>
+          </div>
+        </div>
       </div>
 
       <thought-list class="content-list"></thought-list>
@@ -67,38 +70,68 @@ export default {
 @import "../styles/helpers";
 @import "../styles/colors";
 
+$cover-height: 100px;
+$avatar-width: 200px;
+$spacing: $padding * 2;
+
 .cover {
   background: lightblue;
-  height: 150px;
+  height: $cover-height * 1.5;
 }
 
 .user-info {
-  margin-top: 80px;
+  margin-top: -($avatar-width * 0.9);
+  width: $content-secondary-width;
+  margin-right: $spacing;
 
   span {
     display: block;
   }
 }
 
-.header {
-  position: relative;
-}
-
 .avatar {
   border: 4px solid white;
-  width: 200px;
-  height: 200px;
-  position: absolute;
-  margin-left: 3%;
-  bottom: -80px;
+  width: $avatar-width;
+  height: $avatar-width;
+}
+
+.texts {
+  margin: $spacing 0;
+  color: $primary-text-color;
+}
+
+.name {
+  font-size: rem(20);
+  margin-bottom: $padding / 2;
+}
+
+.username {
+  margin-bottom: $spacing;
+}
+
+.bio {
+  margin-bottom: $spacing;
+}
+
+.join-date {
+  .join-date-icon {
+    display: inline-block;
+    margin-right: rem(8);
+  }
+
+  .join-date-text {
+    display: inline-block;
+  }
 }
 
 .content {
   display: flex;
+  justify-content: center;
 }
 
 .content-list {
-  width: $item-list-width;
+  width: $content-primary-width;
+  margin: $spacing 0;
 }
 
 .control-bar-container {
@@ -109,7 +142,7 @@ export default {
   display: flex;
   height: 60px;
   width: 90%;
-  max-width: 860px;
+  max-width: $max-component-width;
   justify-content: space-between;
   margin-left: auto;
   margin-right: auto;
@@ -119,6 +152,7 @@ export default {
 .counters {
   margin-left: 10%;
   height: 100%;
+  color: $primary-text-color;
 }
 
 .counter {
@@ -143,19 +177,19 @@ export default {
 
 @media screen and (min-width: $break-md) {
   .cover {
-    height: 240px;
+    height: $cover-height * 2.4;
   }
 }
 
 @media screen and (min-width: $break-lg) {
   .cover {
-    height: 300px;
+    height: $cover-height * 3;
   }
 }
 
 @media screen and (max-width: $break-sm) {
   .cover {
-    height: 100px;
+    height: $cover-height;
   }
 
   .content-list {

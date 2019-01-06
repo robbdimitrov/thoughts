@@ -26,8 +26,6 @@ export default {
 <style lang="scss" scoped>
 @import "../styles/variables";
 
-$card-width: 280px;
-
 .container {
   margin-top: $padding;
   display: flex;
@@ -36,13 +34,13 @@ $card-width: 280px;
 }
 
 .user-card {
-  width: $card-width;
+  width: $content-secondary-width;
   margin-right: 2 * $padding;
   display: block;
 }
 
 .content {
-  width: $item-list-width;
+  width: $content-primary-width;
 }
 
 @media screen and (max-width: $break-lg) {

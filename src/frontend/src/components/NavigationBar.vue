@@ -67,7 +67,7 @@ $bar-height: 46px;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  max-width: 860px;
+  max-width: $max-component-width;
   display: flex;
   flex-direction: row;
   align-items: center;
