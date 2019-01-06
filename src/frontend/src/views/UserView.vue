@@ -23,43 +23,38 @@
     <div class="control-bar-container bottom-shadow">
       <div class="control-bar">
         <nav class="counters">
-          <div class="counter thoughts active">
+          <router-link to="/user/thoughts" class="counter thoughts">
             <span class="counter-label">Thoughts</span>
             <span class="counter-value">140</span>
-          </div>
+          </router-link>
 
-          <div class="counter following">
+          <router-link to="/user/following" class="counter following">
             <span class="counter-label">Following</span>
             <span class="counter-value">70</span>
-          </div>
+          </router-link>
 
-          <div class="counter followers">
+          <router-link to="/user/followers" class="counter followers">
             <span class="counter-label">Followers</span>
             <span class="counter-value">250</span>
-          </div>
+          </router-link>
 
-          <div class="counter likes">
+          <router-link to="/user/likes" class="counter likes">
             <span class="counter-label">Likes</span>
             <span class="counter-value">98</span>
-          </div>
+          </router-link>
         </nav>
       </div>
     </div>
 
     <div class="content">
-      <thought-list></thought-list>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import ThoughtList from '../components/ThoughtList.vue';
-
 export default {
   name: 'user-view',
-  components: {
-    ThoughtList
-  }
 }
 </script>
 
@@ -143,17 +138,18 @@ $spacing: $padding * 2;
 
 .counters {
   height: 100%;
-  color: $primary-text-color;
   justify-content: space-around;
 }
 
 .counter {
   width: 24%;
   justify-content: center;
+  text-decoration: none;
+  color: $primary-text-color;
   padding: 0 $padding;
 }
 
-.counter.active {
+.counter.router-link-active {
   border-bottom: 2px solid $active-nav-button-color;
 }
 
