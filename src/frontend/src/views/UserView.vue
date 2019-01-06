@@ -5,22 +5,22 @@
     <div class="control-bar-container bottom-shadow">
       <div class="control-bar">
         <nav class="counters">
-          <div class="counter active">
+          <div class="counter thoughts active">
             <span class="counter-label">Thoughts</span>
             <span class="counter-value">140</span>
           </div>
 
-          <div class="counter">
+          <div class="counter following">
             <span class="counter-label">Following</span>
             <span class="counter-value">70</span>
           </div>
 
-          <div class="counter">
+          <div class="counter followers">
             <span class="counter-label">Followers</span>
             <span class="counter-value">250</span>
           </div>
 
-          <div class="counter">
+          <div class="counter likes">
             <span class="counter-label">Likes</span>
             <span class="counter-value">98</span>
           </div>
@@ -73,6 +73,8 @@ export default {
 $cover-height: 100px;
 $avatar-width: 200px;
 $spacing: $padding * 2;
+
+$counters-left-spacing: $content-secondary-width + 2 * $spacing;
 
 .cover {
   background: lightblue;
@@ -150,15 +152,15 @@ $spacing: $padding * 2;
 }
 
 .counters {
-  margin-left: 10%;
+  margin-left: ($counters-left-spacing / $max-component-width) * 100%;
   height: 100%;
   color: $primary-text-color;
 }
 
 .counter {
   justify-content: center;
-  padding-left: $padding * 1.5;
-  padding-right: $padding * 1.5;
+  padding: 0 $padding;
+  margin-right: $spacing;
 }
 
 .counter.active {
@@ -179,6 +181,10 @@ $spacing: $padding * 2;
   .cover {
     height: $cover-height * 2.4;
   }
+
+  .user-info {
+    margin-left: $spacing;
+  }
 }
 
 @media screen and (min-width: $break-lg) {
@@ -194,6 +200,12 @@ $spacing: $padding * 2;
 
   .content-list {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: $break-md) {
+  .counter.likes {
+    display: none;
   }
 }
 </style>
