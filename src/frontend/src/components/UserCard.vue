@@ -5,7 +5,7 @@
     <div class="content">
       <img class="avatar"
         src="https://via.placeholder.com/300.png" />
-      <div class="labels">
+      <div class="texts">
         <p class="title semibold">John Smith</p>
         <p class="subtitle light">@johnsmith</p>
       </div>
@@ -55,7 +55,7 @@
   border: 2px solid white;
 }
 
-.labels {
+.texts {
   margin: $padding;
   margin-left: 0;
 }
