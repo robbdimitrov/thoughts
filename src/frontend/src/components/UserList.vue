@@ -26,7 +26,6 @@ $margin: $padding / 2;
 $item-width: 0.5 * $content-main-width - $padding;
 
 .item {
-  background: white;
   display: inline-block;
   width: $item-width;
   border-radius: 5px;
@@ -40,16 +39,7 @@ $item-width: 0.5 * $content-main-width - $padding;
     margin-left: auto;
     margin-right: auto;
     display: block;
-    max-width: $item-width;
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: $break-sm) {
-  .item {
-    width: 100%;
-    margin: 0;
-    border-radius: 0;
+    margin-bottom: $padding;
   }
 }
 </style>

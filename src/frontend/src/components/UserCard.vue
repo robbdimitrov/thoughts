@@ -1,5 +1,5 @@
 <template>
-  <div class="container user-card">
+  <div class="container">
     <div class="cover"></div>
 
     <div class="content">

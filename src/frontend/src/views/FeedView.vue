@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container main">
     <user-card class="user-card"></user-card>
     <div class="content">
       <thought-box class="content-input"></thought-box>
@@ -26,8 +26,8 @@ export default {
 <style lang="scss" scoped>
 @import "../styles/variables";
 
-.container {
-  margin-top: $padding;
+.container.main {
+  margin: $padding * 2 0;
   display: flex;
   align-items: flex-start;
   justify-content: center;
