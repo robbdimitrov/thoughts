@@ -2,13 +2,21 @@
 @import 'variables';
 @import 'fonts';
 
-$button-background-color: $active-color;
+// Common
 
 .avatar {
   width: $avatar-width;
   height: $avatar-width;
   border-radius: 50%;
 }
+
+.bottom-shadow {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+// Buttons
+
+$button-background-color: $active-color;
 
 .button {
   background: $button-background-color;
@@ -54,9 +62,7 @@ $button-background-color: $active-color;
   }
 }
 
-.bottom-shadow {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-}
+// Counters
 
 .counters {
   display: flex;
@@ -76,4 +82,26 @@ $button-background-color: $active-color;
 
 .counter-value {
   font-weight: $font-weight-semibold;
+}
+
+// User card
+
+.user-card.container {
+  background: white;
+}
+
+.user-card .cover {
+  height: $cover-height;
+  background: lightblue;
+}
+
+.user-card .avatar {
+  margin: $padding;
+  margin-top: -2 * $padding;
+  border: 2px solid white;
+}
+
+.user-card .subtitle {
+  font-size: rem(14);
+  margin-top: rem(4);
 }

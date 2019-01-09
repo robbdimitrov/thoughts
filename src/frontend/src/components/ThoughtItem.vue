@@ -52,6 +52,7 @@ $context-icon-width: 16px;
 }
 
 .context {
+  display: inline-block;
   margin-top: $padding;
   color: gray;
   font-size: rem(12);
@@ -87,7 +88,6 @@ $context-icon-width: 16px;
 .avatar {
   width: $avatar-width-sm;
   height: $avatar-width-sm;
-  border-radius: 50%;
   padding: $padding;
 }
 

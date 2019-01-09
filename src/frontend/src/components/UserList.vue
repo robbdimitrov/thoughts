@@ -31,6 +31,7 @@ $item-width: 0.5 * $content-main-width - $padding;
   width: $item-width;
   border-radius: 5px;
   box-sizing: border-box;
+  height: 280px;
   margin: $margin;
 }
 

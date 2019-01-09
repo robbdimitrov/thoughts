@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container user-card">
     <div class="cover"></div>
 
     <div class="content">
@@ -32,44 +32,22 @@
 
 <style lang="scss" scoped>
 @import "../styles/variables";
-@import "../styles/helpers";
-@import "../styles/fonts";
 
-.cover {
-  height: $cover-height;
-  background: lightblue;
-}
-
-.content {
+.user-card .content {
   display: flex;
   flex-direction: row;
 }
 
-.container {
-  background: white;
+.counters {
+  margin: 0 0 $padding;
 }
 
-.avatar {
-  margin: $padding;
-  margin-top: -2 * $padding;
-  border: 2px solid white;
-}
-
-.texts {
+.user-card .texts {
   margin: $padding;
   margin-left: 0;
 }
 
-.title {
+.user-card .title {
   margin: 0;
-}
-
-.subtitle {
-  font-size: rem(14);
-  margin-top: rem(2);
-}
-
-.counters {
-  margin: 0 0 $padding;
 }
 </style>

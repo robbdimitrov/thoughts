@@ -1,13 +1,17 @@
 <template>
-  <div class="container">
+  <div class="container user-card">
     <div class="cover"></div>
 
     <div class="content">
-      <img class="avatar"
-        src="https://via.placeholder.com/300.png" />
-      <button class="follow-button outline-button">
-        Follow
-      </button>
+      <div class="header">
+        <img class="avatar"
+          src="https://via.placeholder.com/300.png" />
+
+        <button class="follow-button outline-button">
+          Follow
+        </button>
+      </div>
+
       <div class="texts">
         <p class="title semibold">John Smith</p>
         <p class="subtitle light">@johnsmith</p>
@@ -30,9 +34,32 @@ export default {
 @import "../styles/helpers";
 @import "../styles/colors";
 
-.cover {
-  height: $cover-height;
-  background: lightblue;
+$spacing: $padding * 1.5;
+
+.header {
+  display: flex;
+  justify-content: space-between;
 }
 
+.follow-button {
+  margin: $padding;
+}
+
+.avatar {
+  margin-left: $spacing;
+}
+
+.follow-button {
+  margin: $spacing $spacing 0 0;
+}
+
+.texts {
+  margin: $spacing;
+}
+
+.bio {
+  font-size: rem(14);
+  margin-top: rem(10);
+  margin-bottom: 20px;
+}
 </style>
