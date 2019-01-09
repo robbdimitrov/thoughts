@@ -20,31 +20,7 @@
       </div>
     </div>
 
-    <div class="control-bar-container bottom-shadow">
-      <div class="control-bar">
-        <nav class="counters">
-          <router-link to="/user/thoughts" class="counter thoughts">
-            <span class="counter-label">Thoughts</span>
-            <span class="counter-value">140</span>
-          </router-link>
-
-          <router-link to="/user/following" class="counter following">
-            <span class="counter-label">Following</span>
-            <span class="counter-value">70</span>
-          </router-link>
-
-          <router-link to="/user/followers" class="counter followers">
-            <span class="counter-label">Followers</span>
-            <span class="counter-value">250</span>
-          </router-link>
-
-          <router-link to="/user/likes" class="counter likes">
-            <span class="counter-label">Likes</span>
-            <span class="counter-value">98</span>
-          </router-link>
-        </nav>
-      </div>
-    </div>
+    <control-bar></control-bar>
 
     <div class="content">
       <router-view></router-view>
@@ -53,14 +29,18 @@
 </template>
 
 <script>
+import ControlBar from '../components/ControlBar.vue';
+
 export default {
   name: 'user-view',
+  components: {
+    ControlBar
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../styles/variables";
-@import "../styles/fonts";
 @import "../styles/helpers";
 @import "../styles/colors";
 
@@ -121,46 +101,6 @@ $spacing: $padding * 2;
   margin: $spacing 0;
   margin-left: auto;
   margin-right: auto;
-}
-
-.control-bar-container {
-  background: white;
-}
-
-.control-bar {
-  height: rem(50);
-  width: 90%;
-  max-width: $content-main-width;
-  margin-left: auto;
-  margin-right: auto;
-  align-items: center;
-}
-
-.counters {
-  height: 100%;
-  justify-content: space-around;
-}
-
-.counter {
-  width: 24%;
-  justify-content: center;
-  text-decoration: none;
-  color: $primary-text-color;
-  padding: 0 $padding;
-}
-
-.counter.router-link-active {
-  border-bottom: 2px solid $active-nav-button-color;
-}
-
-.counter-label {
-  font-size: rem(14);
-  font-weight: $font-weight-semibold;
-}
-
-.counter-value {
-  font-size: rem(17);
-  font-weight: $font-weight-bold;
 }
 
 .user-wrapper {
