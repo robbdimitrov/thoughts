@@ -28,8 +28,6 @@ $item-width: 0.5 * $content-main-width - $padding;
 .item {
   display: inline-block;
   width: $item-width;
-  border-radius: 5px;
-  box-sizing: border-box;
   height: 280px;
   margin: $margin;
 }
@@ -40,6 +38,23 @@ $item-width: 0.5 * $content-main-width - $padding;
     margin-right: auto;
     display: block;
     margin-bottom: $padding;
+  }
+}
+
+@media screen and (max-width: $break-sm) {
+  .item {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
+  .item {
+    border-bottom: 1px solid #e6ecf0;
+  }
+
+  .item:last-child {
+    border-bottom: none;
   }
 }
 </style>

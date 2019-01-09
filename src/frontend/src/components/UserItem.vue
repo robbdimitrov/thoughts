@@ -35,6 +35,11 @@ export default {
 @import "../styles/colors";
 
 $spacing: $padding * 1.5;
+$avatar-width-sm: 40px;
+
+.container {
+  box-sizing: border-box;
+}
 
 .header {
   display: flex;
@@ -60,6 +65,34 @@ $spacing: $padding * 1.5;
 .bio {
   font-size: rem(14);
   margin-top: rem(10);
-  margin-bottom: 20px;
+}
+
+@media screen and (max-width: $break-sm) {
+  .cover {
+    display: none;
+  }
+
+  .header {
+    display: block;
+  }
+
+  .content {
+    display: flex;
+  }
+
+  .avatar {
+    width: $avatar-width-sm;
+    height: $avatar-width-sm;
+    margin-top: $spacing;
+  }
+
+  .title, .subtitle {
+    width: 75%;
+  }
+
+  .follow-button {
+    position: absolute;
+    right: 0;
+  }
 }
 </style>
