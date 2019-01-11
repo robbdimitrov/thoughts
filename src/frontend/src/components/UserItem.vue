@@ -34,7 +34,6 @@ export default {
 @import "../styles/helpers";
 @import "../styles/colors";
 
-$spacing: $padding * 1.5;
 $avatar-width-sm: 40px;
 
 .container {
@@ -51,15 +50,15 @@ $avatar-width-sm: 40px;
 }
 
 .avatar {
-  margin-left: $spacing;
+  margin-left: $spacing-sm;
 }
 
 .follow-button {
-  margin: $spacing $spacing 0 0;
+  margin: $spacing-sm $spacing-sm 0 0;
 }
 
 .texts {
-  margin: $spacing;
+  margin: $spacing-sm;
 }
 
 .bio {
@@ -83,7 +82,7 @@ $avatar-width-sm: 40px;
   .avatar {
     width: $avatar-width-sm;
     height: $avatar-width-sm;
-    margin-top: $spacing;
+    margin-top: $spacing-sm;
   }
 
   .title, .subtitle {

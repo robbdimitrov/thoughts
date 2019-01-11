@@ -2,8 +2,8 @@
   <div class="container main">
     <user-card class="user-card"></user-card>
     <div class="content">
-      <thought-box class="content-input"></thought-box>
-      <thought-list class="content-list"></thought-list>
+      <thought-box></thought-box>
+      <thought-list></thought-list>
     </div>
   </div>
 </template>

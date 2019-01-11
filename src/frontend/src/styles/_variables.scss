@@ -8,6 +8,8 @@ $content-main-width: 600px;
 $content-primary-width: 512px;
 $content-secondary-width: 280px;
 $max-component-width: 860px;
+$spacing-sm: $padding * 1.5;
+$spacing-md: $padding * 2;
 
 // Screen media query breaks
 $break-sm: 512px;
