@@ -1,9 +1,9 @@
 <template>
   <div class="container main">
-    <user-card class="user-card"></user-card>
+    <user-card class="user-card" />
     <div class="content">
-      <thought-box></thought-box>
-      <thought-list></thought-list>
+      <thought-box />
+      <thought-list />
     </div>
   </div>
 </template>

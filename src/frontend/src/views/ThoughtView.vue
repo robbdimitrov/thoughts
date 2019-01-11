@@ -1,6 +1,6 @@
 <template>
   <div class="container main-content">
-    <thought-item></thought-item>
+    <thought-item />
   </div>
 </template>
 

@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <thought-item></thought-item>
-    <thought-item></thought-item>
-    <thought-item></thought-item>
+    <thought-item class="item" />
+    <thought-item class="item" />
+    <thought-item class="item" />
   </div>
 </template>
 
@@ -21,12 +21,12 @@ export default {
   flex-direction: column;
 }
 
-.container > article {
+.item {
   width: 100%;
   border-bottom: 1px solid #e6ecf0;
 }
 
-article:last-child {
+.item:last-child {
   border-bottom: none;
 }
 </style>

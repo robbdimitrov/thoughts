@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <user-item class="item"></user-item>
-    <user-item class="item"></user-item>
-    <user-item class="item"></user-item>
-    <user-item class="item"></user-item>
-    <user-item class="item"></user-item>
+    <user-item class="item" />
+    <user-item class="item" />
+    <user-item class="item" />
+    <user-item class="item" />
+    <user-item class="item" />
   </div>
 </template>
 

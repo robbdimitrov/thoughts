@@ -51,9 +51,6 @@ export default {
 
 $icon-width: 30px;
 $icon-font-size: 21px;
-$bar-height: 46px;
-
-
 
 .container {
   display: flex;

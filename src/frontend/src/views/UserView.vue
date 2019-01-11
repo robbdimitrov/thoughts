@@ -1,11 +1,11 @@
 <template>
   <div class="container">
-    <user-header></user-header>
+    <user-header />
 
-    <control-bar></control-bar>
+    <control-bar />
 
     <div class="content main-content">
-      <router-view></router-view>
+      <router-view />
     </div>
   </div>
 </template>
