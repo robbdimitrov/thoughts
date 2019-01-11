@@ -2,7 +2,7 @@
   <div class="container">
     <div class="cover"></div>
 
-    <div class="content">
+    <div class="content main-content">
       <img class="avatar"
         src="https://via.placeholder.com/300.png" />
 
@@ -93,10 +93,6 @@ $avatar-width-small: 80px;
 }
 
 .content {
-  width: 100%;
-  max-width: $content-main-width;
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
   flex-direction: column;
   position: relative;

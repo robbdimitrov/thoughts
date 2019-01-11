@@ -4,7 +4,7 @@
 
     <control-bar></control-bar>
 
-    <div class="content">
+    <div class="content main-content">
       <router-view></router-view>
     </div>
   </div>
@@ -27,10 +27,7 @@ export default {
 @import "../styles/variables";
 
 .content {
-  width: 100%;
-  max-width: $content-main-width;
-  margin: $spacing-md 0;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: $spacing-md;
+  margin-bottom: $spacing-md;
 }
 </style>

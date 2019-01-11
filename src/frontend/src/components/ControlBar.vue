@@ -1,6 +1,6 @@
 <template>
   <div class="container bottom-shadow">
-    <div class="control-bar">
+    <div class="control-bar main-content">
       <nav class="counters">
         <router-link to="/user/thoughts" class="counter thoughts">
           <span class="counter-label">Thoughts</span>
@@ -43,10 +43,6 @@ export default {
 }
 
 .control-bar {
-  width: 100%;
-  max-width: $content-main-width;
-  margin-left: auto;
-  margin-right: auto;
   height: rem(50);
   align-items: center;
 }

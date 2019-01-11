@@ -19,7 +19,6 @@ export default {
 <style lang="scss" scoped>
 .container {
   flex-direction: column;
-  background: white;
 }
 
 .container > article {

@@ -45,6 +45,10 @@ $context-icon-width: 16px;
   display: flex;
 }
 
+.container {
+  background: white;
+}
+
 .context-icon {
   margin-left: ($avatar-width-sm + $padding) - $context-icon-width;
   width: $context-icon-width;
