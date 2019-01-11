@@ -33,10 +33,9 @@ export function createRouter () {
                     { path: '/user', redirect: '/user/thoughts' }
                 ]
             },
-            { path: '/account/password', component: PasswordView },
-            { path: '/account/edit', component: ProfileView },
-            { path: '/account/settings', component: SettingsView },
-            { path: '/account', redirect: '/account/settings' },
+            { path: '/settings', component: SettingsView },
+            { path: '/settings/password', component: PasswordView },
+            { path: '/settings/profile', component: ProfileView },
             { path: '/', redirect: '/feed' }
         ]
     });
