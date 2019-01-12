@@ -49,7 +49,7 @@ form {
   width: 100%;
   height: 100%;
   padding: 6px;
-  border-radius: 8px;
+  border-radius: $border-radius-sm;
   border: 1px solid black;
   resize: none;
   height: 80px;

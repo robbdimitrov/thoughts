@@ -31,7 +31,6 @@ export default {
 }
 
 .search-input {
-  border: none;
   font-weight: $font-weight-regular;
   font-size: rem(14);
   background: $background-color;

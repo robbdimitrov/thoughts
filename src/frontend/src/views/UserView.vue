@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <user-header />
-
     <control-bar />
 
     <div class="content main-content">

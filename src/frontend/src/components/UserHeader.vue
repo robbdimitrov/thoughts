@@ -52,8 +52,8 @@ $avatar-width-small: 80px;
   margin-top: -$avatar-width * 0.6;
   margin-left: $spacing-sm;
   border: 4px solid white;
-  width: $avatar-width;
-  height: $avatar-width;
+  width: $avatar-width-md;
+  height: $avatar-width-md;
 }
 
 .texts {

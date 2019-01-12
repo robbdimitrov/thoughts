@@ -5,8 +5,8 @@
 // Common
 
 .avatar {
-  width: $avatar-width;
-  height: $avatar-width;
+  width: $avatar-width-md;
+  height: $avatar-width-md;
   border-radius: 50%;
 }
 
@@ -28,11 +28,11 @@ $button-background-color: $active-color;
 .button {
   background: $button-background-color;
   text-decoration: none;
-  height: 32px;
+  height: $button-height;
   padding: 0 10px;
   font-size: rem(15);
   color: white;
-  border-radius: 16px;
+  border-radius: $button-height / 2;
   &:not(:disabled) {
     &:hover, &:focus {
       background: darken($button-background-color,8%);
@@ -47,9 +47,9 @@ $button-background-color: $active-color;
 .outline-button {
   border-style: solid;
   border-width: 1px;
-  height: 32px;
+  height: $button-height;
   padding: 0 $padding;
-  border-radius: 16px;
+  border-radius: $button-height / 2;
   border-color: $button-background-color;
   font-weight: $font-weight-semibold;
   text-decoration: none;
@@ -111,4 +111,59 @@ $button-background-color: $active-color;
 .user-card .subtitle {
   font-size: rem(14);
   margin-top: rem(4);
+}
+
+// Form
+
+.fieldset {
+  margin-bottom: $spacing-md;
+  border: 1px solid black;
+  height: $input-height;
+  max-width: $max-input-width;
+  border-radius: $border-radius-sm;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+
+  button {
+    margin-right: $padding / 2;
+    border-radius: $border-radius-sm;
+  }
+
+  .form-input {
+    flex-grow: 1;
+    margin-left: $padding;
+    margin-right: $padding;
+  }
+
+  .input-icon {
+    margin-left: $padding;
+  }
+}
+
+.reference-label::after {
+  content: " ";
+}
+
+.reference, .form-title, .form-message {
+  text-align: center;
+}
+
+.form-title {
+  margin-bottom: $spacing-sm;
+}
+
+.form-button {
+  min-width: 200px;
+  border-radius: $border-radius-sm;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-message, form {
+  margin-bottom: $spacing-lg;
 }
