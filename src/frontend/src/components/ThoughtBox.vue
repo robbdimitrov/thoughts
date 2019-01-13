@@ -9,7 +9,7 @@
         name="thought"
         class="form-input"
         required />
-      <button class="button form-button">
+      <button class="button submit-button">
         Create
       </button>
     </form>
@@ -55,7 +55,7 @@ form {
   height: 80px;
 }
 
-.form-button {
+.submit-button {
   margin-top: $padding;
 }
 
