@@ -4,6 +4,11 @@
 
 // Common
 
+body {
+  background: $background-color;
+  color: $primary-text-color;
+}
+
 .avatar {
   width: $avatar-width-md;
   height: $avatar-width-md;

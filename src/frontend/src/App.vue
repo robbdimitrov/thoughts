@@ -18,9 +18,4 @@ export default {
 
 <style lang="scss">
 @import "styles/main";
-
-body {
-  background: $background-color;
-  color: $primary-text-color;
-}
 </style>
