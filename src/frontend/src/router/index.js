@@ -35,7 +35,7 @@ export function createRouter () {
             },
             { path: '/settings', component: SettingsView },
             { path: '/settings/password', component: PasswordView },
-            { path: '/settings/profile', component: ProfileView },
+            { path: '/settings/account', component: ProfileView },
             { path: '/', redirect: '/feed' }
         ]
     });
