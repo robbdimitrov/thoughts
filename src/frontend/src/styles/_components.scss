@@ -167,3 +167,11 @@ $button-background-color: $active-color;
 .form-message, form {
   margin-bottom: $spacing-lg;
 }
+
+.form-content {
+  background: white;
+  margin-top: $spacing-md;
+  margin-bottom: $spacing-md;
+  padding: $spacing-lg;
+  box-sizing: border-box;
+}

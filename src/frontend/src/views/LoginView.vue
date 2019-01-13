@@ -1,12 +1,12 @@
 <template>
   <div class="container">
-    <div class="content main-content">
+    <div class="form-content main-content">
       <h1 class="form-title">Login</h1>
       <p class="form-message">Welcome back! Login to access your account.</p>
 
       <form>
         <div class="fieldset">
-          <i class="fas input-icon fa-user"></i>
+          <i class="fas fa-envelope input-icon"></i>
 
           <input type="email" class="form-input"
             id="email" placeholder="Email"
@@ -14,7 +14,7 @@
         </div>
 
         <div class="fieldset">
-          <i class="fas input-icon fa-lock"></i>
+          <i class="fas fa-lock input-icon"></i>
 
           <input type="password" class="form-input"
             id="password" placeholder="Password"
@@ -46,18 +46,3 @@ export default {
   name: 'login-view'
 }
 </script>
-
-<style lang="scss" scoped>
-@import "../styles/variables";
-@import "../styles/fonts";
-@import "../styles/helpers";
-@import "../styles/colors";
-
-.content {
-  background: white;
-  margin-top: $spacing-md;
-  margin-bottom: $spacing-md;
-  padding: $spacing-lg;
-  box-sizing: border-box;
-}
-</style>
