@@ -1,16 +1,16 @@
 <template>
   <div class="container main-content">
-    <thought-item />
+    <thought-list :items="1" />
   </div>
 </template>
 
 <script>
-import ThoughtItem from '../components/ThoughtItem.vue';
+import ThoughtList from '../components/ThoughtList.vue';
 
 export default {
   name: 'profile-view',
   components: {
-    ThoughtItem
+    ThoughtList
   }
 };
 </script>

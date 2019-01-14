@@ -1,10 +1,7 @@
 <template>
   <div class="container">
-    <user-item class="item" />
-    <user-item class="item" />
-    <user-item class="item" />
-    <user-item class="item" />
-    <user-item class="item" />
+    <user-item v-for="item in items" :key="item"
+      class="list-item" />
   </div>
 </template>
 
@@ -15,6 +12,9 @@ export default {
   name: 'user-list',
   components: {
     UserItem
+  },
+  props: {
+    items: Number
   }
 };
 </script>
@@ -25,7 +25,7 @@ export default {
 $margin: $padding / 2;
 $item-width: 0.5 * $content-main-width - $padding;
 
-.item {
+.list-item {
   display: inline-block;
   width: $item-width;
   height: 280px;
@@ -33,7 +33,7 @@ $item-width: 0.5 * $content-main-width - $padding;
 }
 
 @media screen and (max-width: $content-main-width) {
-  .item {
+  .list-item {
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -42,18 +42,15 @@ $item-width: 0.5 * $content-main-width - $padding;
 }
 
 @media screen and (max-width: $break-sm) {
-  .item {
+  .list-item {
     display: inline-block;
     width: 100%;
     height: auto;
     margin: 0;
-  }
-
-  .item {
     border-bottom: 1px solid #e6ecf0;
   }
 
-  .item:last-child {
+  .list-item:last-child {
     border-bottom: none;
   }
 }

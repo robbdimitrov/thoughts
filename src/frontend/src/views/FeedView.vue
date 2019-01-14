@@ -3,7 +3,7 @@
     <user-card class="user-card" />
     <div class="content">
       <thought-box />
-      <thought-list />
+      <thought-list :items="3" />
     </div>
   </div>
 </template>

@@ -2,7 +2,7 @@
   <div class="container bottom-shadow">
     <div class="control-bar main-content">
       <nav class="counters">
-        <router-link to="/user/thoughts" class="counter thoughts">
+        <router-link to="/user" exact class="counter thoughts">
           <span class="counter-label">Thoughts</span>
           <span class="counter-value">140</span>
         </router-link>

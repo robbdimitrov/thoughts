@@ -27,10 +27,10 @@
           <span>View all</span>
         </div>
 
-        <user-list class="user-container" />
+        <user-list :items="2" class="user-container" />
       </div>
 
-      <thought-list class="thought-container" />
+      <thought-list class="thought-container" :items="3" />
     </div>
   </div>
 </template>

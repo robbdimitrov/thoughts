@@ -1,8 +1,7 @@
 <template>
   <div class="container">
-    <thought-item class="item" />
-    <thought-item class="item" />
-    <thought-item class="item" />
+    <thought-item v-for="item in items" :key="item"
+      class="list-item" />
   </div>
 </template>
 
@@ -12,6 +11,9 @@ import ThoughtItem from '../components/ThoughtItem.vue';
 export default {
   components: {
     ThoughtItem
+  },
+  props: {
+    items: Number
   }
 };
 </script>
@@ -21,12 +23,12 @@ export default {
   flex-direction: column;
 }
 
-.item {
+.list-item {
   width: 100%;
   border-bottom: 1px solid #e6ecf0;
 }
 
-.item:last-child {
+.list-item:last-child {
   border-bottom: none;
 }
 </style>

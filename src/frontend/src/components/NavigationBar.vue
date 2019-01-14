@@ -2,7 +2,7 @@
   <header class="container bottom-shadow">
     <div class="content">
       <div class="left-items">
-        <router-link to="/feed" class="home-button nav-button">
+        <router-link to="/" exact class="home-button nav-button">
           <i class="nav-button-icon fas fa-home"></i>
           <span class="nav-button-label">Home</span>
         </router-link>
