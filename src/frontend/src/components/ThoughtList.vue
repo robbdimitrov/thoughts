@@ -19,13 +19,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../styles/colors";
+
 .container {
   flex-direction: column;
 }
 
 .list-item {
   width: 100%;
-  border-bottom: 1px solid #e6ecf0;
+  border-bottom: 1px solid $background-color;
 }
 
 .list-item:last-child {
