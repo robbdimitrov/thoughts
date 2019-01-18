@@ -61,7 +61,7 @@ export default {
 }
 
 .counter.router-link-active {
-  border-bottom: 2px solid $active-nav-button-color;
+  @include active-border;
 }
 
 .counter-label {
