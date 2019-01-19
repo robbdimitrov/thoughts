@@ -8,20 +8,24 @@
         <div class="fieldset">
           <i class="fas fa-envelope input-icon"></i>
 
-          <input type="email" class="form-input"
+          <input
+            type="email" class="form-input"
             id="email" placeholder="Email"
-            pattern="[^@]+@[^@]+\.[^@]+" required>
+            pattern="[^@]+@[^@]+\.[^@]+" required
+          >
         </div>
 
         <div class="fieldset">
           <i class="fas fa-lock input-icon"></i>
 
-          <input type="password" class="form-input"
+          <input
+            type="password" class="form-input"
             id="password" placeholder="Password"
-            minlength="4" maxlength="30" required>
+            minlength="4" maxlength="30" required
+          >
 
-          <button type="button" class="outline-button">
-            SHOW
+          <button type="button" class="visibility-button">
+            <i class="fas fa-eye"></i>
           </button>
         </div>
 
@@ -44,5 +48,5 @@
 <script>
 export default {
   name: 'login-view'
-}
+};
 </script>

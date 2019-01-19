@@ -1,15 +1,19 @@
 <template>
   <div class="container">
-    <img class="avatar"
-      src="https://via.placeholder.com/300.png" />
+    <img
+      class="avatar"
+      src="https://via.placeholder.com/300.png"
+    />
 
     <form class="input">
-      <textarea type="text"
+      <textarea
+        type="text"
         placeholder="What are you thinking?"
         id="thought"
         name="thought"
         class="form-input"
-        required />
+        required
+      />
 
       <button class="button submit-button">
         Create
@@ -53,7 +57,7 @@ form {
   height: 100%;
   padding: 6px;
   border-radius: $border-radius-sm;
-  @include border;
+  @include border-dark;
   resize: none;
   height: 80px;
 }

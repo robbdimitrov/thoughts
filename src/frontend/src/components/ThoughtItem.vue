@@ -6,8 +6,10 @@
     </div>
 
     <div class="wrapper">
-      <img class="avatar"
-        src="https://via.placeholder.com/300.png" />
+      <img
+        class="avatar"
+        src="https://via.placeholder.com/300.png"
+      />
 
       <div class="content">
         <p class="profile-action">
@@ -33,6 +35,12 @@
     </div>
   </article>
 </template>
+
+<script>
+export default {
+  name:  'thought-item'
+};
+</script>
 
 <style lang="scss" scoped>
 @import "../styles/variables";

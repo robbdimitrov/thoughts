@@ -7,9 +7,11 @@
         <div class="fieldset">
           <i class="fas fa-lock input-icon"></i>
 
-          <input type="password" class="form-input"
+          <input
+            type="password" class="form-input"
             id="old-password" placeholder="New Password"
-            minlength="4" maxlength="30" required>
+            minlength="4" maxlength="30" required
+          >
 
           <button type="button" class="outline-button">
             SHOW
@@ -19,9 +21,11 @@
         <div class="fieldset">
           <i class="fas fa-lock input-icon"></i>
 
-          <input type="password" class="form-input"
+          <input
+            type="password" class="form-input"
             id="password" placeholder="Current Password"
-            minlength="4" maxlength="30" required>
+            minlength="4" maxlength="30" required
+          >
 
           <button type="button" class="outline-button">
             SHOW
@@ -40,7 +44,7 @@
 <script>
 export default {
   name: 'password-view'
-}
+};
 </script>
 
 <style lang="scss" scoped>

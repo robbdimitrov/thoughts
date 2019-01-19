@@ -7,25 +7,32 @@
         <div class="fieldset">
           <i class="fas fa-passport input-icon"></i>
 
-          <input type="text" class="form-input"
+          <input
+            type="text" class="form-input"
             id="name" placeholder="Name"
-            required>
+            required
+          >
         </div>
 
         <div class="fieldset">
           <i class="fas fa-user input-icon"></i>
 
-          <input type="text" class="form-input"
+          <input
+            type="text" class="form-input"
             id="username" placeholder="Username"
-            required>
+            required
+          >
         </div>
 
         <div class="fieldset">
           <i class="fas fa-envelope input-icon"></i>
 
-          <input type="email" class="form-input"
+          <input
+            type="email" class="form-input"
             id="email" placeholder="Email"
-            pattern="[^@]+@[^@]+\.[^@]+" required>
+            pattern="[^@]+@[^@]+\.[^@]+"
+            required
+          >
         </div>
 
         <button type="submit"
@@ -40,7 +47,7 @@
 <script>
 export default {
   name: 'edit-profile-view'
-}
+};
 </script>
 
 <style lang="scss" scoped>

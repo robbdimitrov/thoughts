@@ -3,8 +3,11 @@
     <div class="cover"></div>
 
     <div class="content">
-      <img class="avatar"
-        src="https://via.placeholder.com/300.png" />
+      <img
+        class="avatar"
+        src="https://via.placeholder.com/300.png"
+      />
+
       <div class="texts">
         <p class="title semibold">John Smith</p>
         <p class="subtitle light">@johnsmith</p>
@@ -29,6 +32,12 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'user-card'
+};
+</script>
 
 <style lang="scss" scoped>
 @import "../styles/variables";

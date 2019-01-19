@@ -15,6 +15,7 @@ $avatar-width-lg: 80px;
 $cover-height: 80px;
 
 // Border
+$border-radius-xs: 4px;
 $border-radius-sm: 8px;
 $border-radius-md: 16px;
 
@@ -23,6 +24,11 @@ $content-main-width: 600px;
 $content-primary-width: 512px;
 $content-secondary-width: 280px;
 $max-component-width: 860px;
+
+// Z-index
+$z-index-component: 0;
+$z-index-dropdown: 1;
+$z-index-popup: 2;
 
 // Components
 $bar-height: 46px;

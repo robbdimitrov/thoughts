@@ -18,11 +18,15 @@
       <div class="right-items">
         <search-bar class="search-bar"></search-bar>
 
-        <router-link to="/user" class="profile-button">
-          <img class="profile-button-image"
+        <div class="profile-button" v-on:click="toggleDropdown">
+          <img
+            class="profile-button-image"
             src="https://via.placeholder.com/300.png"
-            alt="Profile" />
-        </router-link>
+            alt="Profile"
+          />
+
+          <settings-menu v-if="showDropdown" />
+        </div>
 
         <button class="button create-button">
           Create
@@ -33,12 +37,24 @@
 </template>
 
 <script>
-import SearchBar from './SearchBar.vue'
+import SearchBar from './SearchBar.vue';
+import SettingsMenu from './SettingsMenu.vue';
 
 export default {
   name: 'navigation-bar',
   components: {
-    SearchBar
+    SearchBar,
+    SettingsMenu
+  },
+  data: function () {
+    return {
+      showDropdown: false
+    };
+  },
+  methods: {
+    toggleDropdown: function (event) {
+      this.showDropdown = !this.showDropdown;
+    }
   }
 };
 </script>
@@ -66,6 +82,14 @@ $icon-font-size: 21px;
   align-items: center;
   height: 100%;
   justify-content: space-between;
+}
+
+.dropdown {
+  position: relative;
+  width: $content-secondary-width;
+  z-index: $z-index-dropdown;
+  border-radius: $border-radius-xs;
+  left: -$content-secondary-width + $icon-width;
 }
 
 .nav-button {
@@ -146,6 +170,15 @@ $icon-font-size: 21px;
 @media screen and (min-width: $break-md) {
   .search-button {
     display: none;
+  }
+}
+
+@media screen and (max-width: $break-sm) {
+  .dropdown {
+    position: absolute;
+    width: 100%;
+    border-radius: 0;
+    left: 0;
   }
 }
 </style>

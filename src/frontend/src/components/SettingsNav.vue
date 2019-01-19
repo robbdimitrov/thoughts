@@ -23,7 +23,7 @@
 <script>
 export default {
   name: 'settings-nav'
-}
+};
 </script>
 
 <style lang="scss" scoped>

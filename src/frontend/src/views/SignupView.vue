@@ -8,33 +8,41 @@
         <div class="fieldset">
           <i class="fas fa-passport input-icon"></i>
 
-          <input type="text" class="form-input"
+          <input
+            type="text" class="form-input"
             id="name" placeholder="Name"
-            required>
+            required
+          >
         </div>
 
         <div class="fieldset">
           <i class="fas fa-user input-icon"></i>
 
-          <input type="text" class="form-input"
+          <input
+            type="text" class="form-input"
             id="username" placeholder="Username"
-            required>
+            required
+          >
         </div>
 
         <div class="fieldset">
           <i class="fas fa-envelope input-icon"></i>
 
-          <input type="email" class="form-input"
+          <input
+            type="email" class="form-input"
             id="email" placeholder="Email"
-            pattern="[^@]+@[^@]+\.[^@]+" required>
+            pattern="[^@]+@[^@]+\.[^@]+" required
+          >
         </div>
 
         <div class="fieldset">
           <i class="fas fa-lock input-icon"></i>
 
-          <input type="password" class="form-input"
+          <input
+            type="password" class="form-input"
             id="password" placeholder="Password"
-            minlength="4" maxlength="30" required>
+            minlength="4" maxlength="30" required
+          >
 
           <button type="button" class="outline-button">
             SHOW
@@ -60,5 +68,5 @@
 <script>
 export default {
   name: 'signup-view'
-}
+};
 </script>

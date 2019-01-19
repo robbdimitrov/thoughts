@@ -141,8 +141,7 @@ $button-background-color: $active-color;
   margin-right: auto;
 
   button {
-    margin-right: $padding / 2;
-    border-radius: $border-radius-sm;
+    margin-right: $padding;
   }
 
   .form-input {

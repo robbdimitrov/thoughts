@@ -3,8 +3,10 @@
     <div class="cover"></div>
 
     <div class="content main-content">
-      <img class="avatar"
-        src="https://via.placeholder.com/300.png" />
+      <img
+        class="avatar"
+        src="https://via.placeholder.com/300.png"
+      />
 
       <button class="follow-button outline-button">
         Follow
@@ -27,7 +29,7 @@
 <script>
 export default {
   name: 'user-header'
-}
+};
 </script>
 
 <style lang="scss" scoped>

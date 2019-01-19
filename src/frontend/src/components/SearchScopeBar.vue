@@ -25,7 +25,7 @@
 <script>
 export default {
   name: 'search-scope-bar'
-}
+};
 </script>
 
 <style lang="scss" scoped>

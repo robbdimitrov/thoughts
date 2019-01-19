@@ -1,7 +1,10 @@
 <template>
   <div class="container">
-    <user-item v-for="item in items" :key="item"
-      class="list-item" />
+    <user-item
+      v-for="item in items"
+      :key="item"
+      class="list-item"
+    />
   </div>
 </template>
 

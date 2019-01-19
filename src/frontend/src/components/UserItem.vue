@@ -4,8 +4,10 @@
 
     <div class="content">
       <div class="header">
-        <img class="avatar"
-          src="https://via.placeholder.com/300.png" />
+        <img
+          class="avatar"
+          src="https://via.placeholder.com/300.png"
+        />
 
         <button class="follow-button outline-button">
           Follow
@@ -16,7 +18,9 @@
         <p class="title semibold">John Smith</p>
         <p class="subtitle light">@johnsmith</p>
 
-        <p class="bio">A secret agent, Forbes man of the year</p>
+        <p class="bio">
+          A secret agent, Forbes man of the year
+        </p>
       </div>
     </div>
   </div>

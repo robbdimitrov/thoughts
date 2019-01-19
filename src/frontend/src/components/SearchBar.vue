@@ -1,8 +1,12 @@
 <template>
   <div class="container">
     <i class="icon fas fa-search"></i>
-    <input class="search-input" type="text"
-      placeholder="Search Thoughts">
+
+    <input
+      class="search-input"
+      type="text"
+      placeholder="Search Thoughts"
+    >
   </div>
 </template>
 
@@ -20,7 +24,6 @@ export default {
 
 .container {
   display: flex;
-  @include border;
   padding-left: $padding;
   padding-right: $padding;
 }

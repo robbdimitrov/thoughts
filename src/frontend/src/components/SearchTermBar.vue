@@ -9,7 +9,7 @@
 <script>
 export default {
   name: 'search-term-bar'
-}
+};
 </script>
 
 <style lang="scss" scoped>

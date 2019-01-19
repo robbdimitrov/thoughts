@@ -1,7 +1,10 @@
 <template>
   <div class="container">
-    <thought-item v-for="item in items" :key="item"
-      class="list-item" />
+    <thought-item
+      v-for="item in items"
+      :key="item"
+      class="list-item"
+    />
   </div>
 </template>
 
