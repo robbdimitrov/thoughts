@@ -2,6 +2,7 @@
   <div class="container">
     <img class="avatar"
       src="https://via.placeholder.com/300.png" />
+
     <form class="input">
       <textarea type="text"
         placeholder="What are you thinking?"
@@ -9,6 +10,7 @@
         name="thought"
         class="form-input"
         required />
+
       <button class="button submit-button">
         Create
       </button>

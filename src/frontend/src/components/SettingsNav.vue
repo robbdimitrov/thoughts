@@ -6,17 +6,17 @@
       </span>
     </div>
 
-    <div class="nav-item">
+    <router-link to="/settings/account" class="nav-item nav-element">
       <span class="nav-item-title">
         Edit profile
       </span>
-    </div>
+    </router-link>
 
-    <div class="nav-item active">
+    <router-link to="/settings/password" class="nav-item nav-element">
       <span class="nav-item-title">
         Change password
       </span>
-    </div>
+    </router-link>
   </div>
 </template>
 
@@ -45,27 +45,31 @@ export default {
   &:last-child {
     border-bottom: none;
   }
+}
+
+.nav-element {
+  box-sizing: border-box;
+  text-decoration: none;
+  color: $primary-text-color;
 
   &:hover {
     background: $selected-color;
   }
-}
 
-.nav-item.active {
-  border-left: 2px solid $active-color;
+  &.router-link-active {
+    border-left: 2px solid $active-color;
 
-  .title {
-    margin-left: $spacing-sm - 2px;
+    .nav-item-title {
+      margin-left: $spacing-sm - 2px;
+    }
+
+    &:hover {
+      background: $primary-color;
+    }
   }
 }
 
-.nav-item.active, .nav-item.active:hover {
-  &:hover {
-    background: $primary-color;
-  }
-}
-
-.nav-header, .nav-header:hover {
+.nav-header {
   font-weight: $font-weight-semibold;
   background: $secondary-color;
   font-size: rem(18);
