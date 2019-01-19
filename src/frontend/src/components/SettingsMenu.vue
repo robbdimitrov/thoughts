@@ -6,12 +6,6 @@
       </span>
     </router-link>
 
-    <router-link to="/settings/account" class="dropdown-item">
-      <span class="dropdown-item-title">
-        Edit profile
-      </span>
-    </router-link>
-
     <router-link to="/settings" class="dropdown-item">
       <span class="dropdown-item-title">
         Settings

@@ -52,7 +52,7 @@ export default {
     };
   },
   methods: {
-    toggleDropdown: function (event) {
+    toggleDropdown: function () {
       this.showDropdown = !this.showDropdown;
     }
   }
