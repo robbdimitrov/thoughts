@@ -31,6 +31,8 @@ export default {
 @import "../styles/fonts";
 @import "../styles/helpers";
 
+$active-item-width: 4px;
+
 .container {
   background: $primary-color;
   flex-direction: column;
@@ -57,10 +59,10 @@ export default {
   }
 
   &.router-link-active {
-    border-left: 2px solid $active-color;
+    border-left: $active-item-width solid $active-color;
 
     .nav-item-title {
-      margin-left: $spacing-sm - 2px;
+      margin-left: $spacing-sm - $active-item-width;
     }
 
     &:hover {

@@ -46,4 +46,17 @@ export default {
   margin-top: $spacing-md;
   margin-bottom: $spacing-md;
 }
+
+@media screen and (max-width: $break-md) {
+  .container {
+    flex-direction: column;
+    align-items: center
+  }
+
+  .nav {
+    margin: 0;
+    width: 100%;
+    max-width: $content-main-width;
+  }
+}
 </style>
