@@ -7,8 +7,8 @@
     <div class="content main-content">
       <div class="user-container">
         <div class="user-header">
-          <span>People</span>
-          <span>View all</span>
+          <span class="user-header-title">People</span>
+          <span class="user-header-button">View all</span>
         </div>
 
         <user-list :items="2" />
@@ -46,10 +46,34 @@ export default {
 }
 
 .user-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-top: $spacing-md;
+  margin-bottom: $padding;
 }
 
 .user-container {
   margin-bottom: $padding;
+}
+
+.user-header-title {
+  font-size: rem(17);
+  font-weight: $font-weight-semibold;
+}
+
+.user-header-button {
+  font-size: rem(14);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@media screen and (max-width: $break-md) {
+  .user-header {
+    margin-left: $padding;
+    margin-right: $padding;
+  }
 }
 </style>
