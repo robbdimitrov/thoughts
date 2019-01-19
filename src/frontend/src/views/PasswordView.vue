@@ -8,7 +8,7 @@
           <i class="fas fa-lock input-icon"></i>
 
           <input type="password" class="form-input"
-            id="password" placeholder="New Password"
+            id="old-password" placeholder="New Password"
             minlength="4" maxlength="30" required>
 
           <button type="button" class="outline-button">
