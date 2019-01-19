@@ -1,33 +1,17 @@
 <template>
   <div class="container">
-    <div class="search-term-bar">
-      <span class="search-term">Search term</span>
-    </div>
+    <search-term-bar class="search-term-bar" />
 
-    <div class="scope-nav-bar">
-      <div class="scope-nav-item">
-        <span class="scope-nav-item-title">
-          All
-        </span>
+    <search-scope-bar class="scope-nav-bar" />
 
-        <span class="scope-nav-item-title">
-          People
-        </span>
-
-        <span class="scope-nav-item-title">
-          Tweets
-        </span>
-      </div>
-    </div>
-
-    <div class="content">
+    <div class="content main-content">
       <div class="user-container">
         <div class="user-header">
-          <span>People</span>
-          <span>View all</span>
+          <span class="user-header-title">People</span>
+          <span class="user-header-button">View all</span>
         </div>
 
-        <user-list :items="2" class="user-container" />
+        <user-list :items="2" />
       </div>
 
       <thought-list class="thought-container" :items="3" />
@@ -36,12 +20,16 @@
 </template>
 
 <script>
+import SearchTermBar from '../components/SearchTermBar.vue';
+import SearchScopeBar from '../components/SearchScopeBar.vue';
 import ThoughtList from '../components/ThoughtList.vue';
 import UserList from '../components/UserList.vue';
 
 export default {
   name: 'search-view',
   components: {
+    SearchTermBar,
+    SearchScopeBar,
     ThoughtList,
     UserList
   }
@@ -49,5 +37,43 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../styles/variables";
+@import "../styles/fonts";
+@import "../styles/helpers";
 
+.content {
+  margin-bottom: $spacing-md;
+}
+
+.user-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: $spacing-md;
+  margin-bottom: $padding;
+}
+
+.user-container {
+  margin-bottom: $padding;
+}
+
+.user-header-title {
+  font-size: rem(17);
+  font-weight: $font-weight-semibold;
+}
+
+.user-header-button {
+  font-size: rem(14);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@media screen and (max-width: $break-md) {
+  .user-header {
+    margin-left: $padding;
+    margin-right: $padding;
+  }
+}
 </style>

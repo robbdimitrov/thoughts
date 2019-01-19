@@ -34,13 +34,6 @@ export default {
   height: 280px;
 }
 
-@media screen and (max-width: $content-main-width) {
-  .container {
-    grid-template-columns: $content-secondary-width;
-    justify-content: center;
-  }
-}
-
 @media screen and (max-width: $break-sm) {
   .container {
     display: block;

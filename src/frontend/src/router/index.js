@@ -23,7 +23,7 @@ export function createRouter () {
             { path: '/search', component: SearchView },
             { path: '/thought', component: ThoughtView },
             { path: '/user/:location*', component: UserView },
-            { path: '/settings', component: SettingsView },
+            { path: '/settings*', component: SettingsView },
             { path: '/settings/password', component: PasswordView },
             { path: '/settings/account', component: ProfileView }
         ]

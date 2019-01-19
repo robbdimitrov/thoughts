@@ -1,6 +1,6 @@
 <template>
   <header class="container bottom-shadow">
-    <div class="content">
+    <div class="content main-container">
       <div class="left-items">
         <router-link to="/" exact class="home-button nav-button">
           <i class="nav-button-icon fas fa-home"></i>
@@ -61,10 +61,6 @@ $icon-font-size: 21px;
 }
 
 .content {
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: $max-component-width;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -83,7 +79,7 @@ $icon-font-size: 21px;
 
 .nav-button.router-link-active {
   color: $active-nav-button-color;
-  border-bottom: 2px solid $active-nav-button-color;
+  @include active-border;
 }
 
 .left-items {

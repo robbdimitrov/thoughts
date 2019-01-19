@@ -1,3 +1,7 @@
 @function rem($pixels, $browser-context: 16) {
   @return ($pixels / $browser-context) * 1rem;
 }
+
+@mixin active-border {
+  border-bottom: 2px solid $active-nav-button-color;
+}
