@@ -25,6 +25,7 @@ export default {
 <style lang="scss" scoped>
 @import "../styles/variables";
 @import "../styles/colors";
+@import "../styles/helpers";
 
 $avatar-padding: $avatar-width-sm - $avatar-width-xs + $padding;
 
@@ -50,7 +51,7 @@ form {
   height: 100%;
   padding: 6px;
   border-radius: $border-radius-sm;
-  border: 1px solid black;
+  @include border;
   resize: none;
   height: 80px;
 }

@@ -36,8 +36,6 @@ export default {
 @import "../styles/colors";
 
 $cover-height: 100px;
-$avatar-width: 100px;
-$avatar-width-small: 80px;
 
 .cover {
   background: lightblue;
@@ -45,13 +43,13 @@ $avatar-width-small: 80px;
 }
 
 .container {
-  background: white;
+  background: $primary-color;
 }
 
 .avatar {
-  margin-top: -$avatar-width * 0.6;
+  margin-top: -$avatar-width-md * 0.8;
   margin-left: $spacing-sm;
-  border: 4px solid white;
+  border: 4px solid $primary-color;
   width: $avatar-width-md;
   height: $avatar-width-md;
 }
@@ -77,8 +75,8 @@ $avatar-width-small: 80px;
 
 .follow-button {
   position: absolute;
-  top: $padding * 1.5;
-  right: $padding * 1.5;
+  top: $spacing-sm;
+  right: $spacing-sm;
 }
 
 .join-date {
@@ -108,9 +106,9 @@ $avatar-width-small: 80px;
   }
 
   .avatar {
-    margin-top: -$avatar-width-small * 0.5;
-    width: $avatar-width-small;
-    height: $avatar-width-small;
+    margin-top: -$avatar-width-sm * 0.5;
+    width: $avatar-width-sm;
+    height: $avatar-width-sm;
   }
 }
 </style>

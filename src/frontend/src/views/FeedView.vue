@@ -27,7 +27,7 @@ export default {
 @import "../styles/variables";
 
 .container.main {
-  margin: $padding * 2 0;
+  margin: $spacing-md 0;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -35,7 +35,7 @@ export default {
 
 .user-card {
   width: $content-secondary-width;
-  margin-right: 2 * $padding;
+  margin-right: $spacing-md;
   display: block;
 }
 
@@ -43,7 +43,7 @@ export default {
   width: $content-primary-width;
 }
 
-@media screen and (max-width: $break-lg) {
+@media screen and (max-width: 820px) {
   .user-card {
     display: none;
   }

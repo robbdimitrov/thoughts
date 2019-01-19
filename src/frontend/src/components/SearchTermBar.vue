@@ -30,7 +30,7 @@ $search-term-background: #35393C;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: rem(27);
-  color: white;
+  color: $primary-color;
   font-weight: $font-weight-semibold;
 }
 </style>

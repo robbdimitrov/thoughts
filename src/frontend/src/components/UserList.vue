@@ -22,6 +22,7 @@ export default {
 <style lang="scss" scoped>
 @import "../styles/variables";
 @import "../styles/colors";
+@import "../styles/helpers";
 
 .container {
   display: grid;
@@ -42,11 +43,11 @@ export default {
   .list-item {
     height: auto;
     width: 100%;
-    border-bottom: 1px solid $background-color;
-  }
+    @include separator;
 
-  .list-item:last-child {
-    border-bottom: none;
+    &:last-child {
+      border-bottom: none;
+    }
   }
 }
 </style>

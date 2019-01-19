@@ -1,4 +1,10 @@
 $background-color: #E6ECF0;
+$shadow-color: rgba(0, 0, 0, 0.25);
+
+$primary-color: white;
+$secondary-color: darken($primary-color, 5%);
+$selected-color: darken($primary-color, 3%);
+
 $primary-text-color: #333333;
 $active-color: #1DA1F2;
 

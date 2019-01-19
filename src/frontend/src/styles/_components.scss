@@ -16,7 +16,7 @@ body {
 }
 
 .bottom-shadow {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid $shadow-color;
 }
 
 .main-content {
@@ -43,11 +43,11 @@ $button-background-color: $active-color;
   height: $button-height;
   padding: 0 10px;
   font-size: rem(15);
-  color: white;
+  color: $primary-color;
   border-radius: $button-height / 2;
   &:not(:disabled) {
     &:hover, &:focus {
-      background: darken($button-background-color,8%);
+      background: darken($button-background-color, 8%);
       transition: all 0.3s ease;
     }
     &:active {
@@ -70,13 +70,13 @@ $button-background-color: $active-color;
     &:hover, &:focus {
       border-color: darken($button-background-color,8%);
       color: darken($primary-text-color, 8%);
-      background: darken(white, 8%);
+      background: darken($primary-color, 8%);
       transition: all 0.3s ease;
     }
     &:active {
       border-color: darken($button-background-color, 25%);
       color: darken($primary-text-color, 25%);
-      background: darken(white, 25%);
+      background: darken($primary-color, 25%);
     }
   }
 }
@@ -106,7 +106,7 @@ $button-background-color: $active-color;
 // User card
 
 .user-card.container {
-  background: white;
+  background: $primary-color;
 }
 
 .user-card .cover {
@@ -116,8 +116,8 @@ $button-background-color: $active-color;
 
 .user-card .avatar {
   margin: $padding;
-  margin-top: -2 * $padding;
-  border: 2px solid white;
+  margin-top: -$spacing-md;
+  border: 2px solid $primary-color;
 }
 
 .user-card .subtitle {
@@ -129,7 +129,7 @@ $button-background-color: $active-color;
 
 .fieldset {
   margin-bottom: $spacing-md;
-  border: 1px solid black;
+  @include border;
   height: $input-height;
   max-width: $max-input-width;
   border-radius: $border-radius-sm;
@@ -181,7 +181,7 @@ $button-background-color: $active-color;
 }
 
 .form-content {
-  background: white;
+  background: $primary-color;
   margin-top: $spacing-md;
   margin-bottom: $spacing-md;
   padding: $spacing-lg;

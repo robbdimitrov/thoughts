@@ -56,7 +56,7 @@ $icon-font-size: 21px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: white;
+  background: $primary-color;
   height: $bar-height;
 }
 

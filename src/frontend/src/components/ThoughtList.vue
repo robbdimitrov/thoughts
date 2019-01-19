@@ -20,6 +20,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../styles/colors";
+@import "../styles/helpers";
 
 .container {
   flex-direction: column;
@@ -27,10 +28,10 @@ export default {
 
 .list-item {
   width: 100%;
-  border-bottom: 1px solid $background-color;
-}
+  @include separator;
 
-.list-item:last-child {
-  border-bottom: none;
+  &:last-child {
+    border-bottom: none;
+  }
 }
 </style>

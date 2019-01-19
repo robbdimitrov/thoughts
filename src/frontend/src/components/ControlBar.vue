@@ -39,7 +39,7 @@ export default {
 @import "../styles/colors";
 
 .container {
-  background: white;
+  background: $primary-color;
 }
 
 .control-bar {

@@ -20,7 +20,7 @@ export default {
 
 .container {
   display: flex;
-  border: 1px solid black;
+  @include border;
   padding-left: $padding;
   padding-right: $padding;
 }

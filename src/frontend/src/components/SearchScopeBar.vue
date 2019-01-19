@@ -35,7 +35,7 @@ export default {
 @import "../styles/helpers";
 
 .container {
-  background: white;
+  background: $primary-color;
   height: $bar-height;
 }
 

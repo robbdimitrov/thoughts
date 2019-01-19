@@ -46,7 +46,7 @@ $context-icon-width: 16px;
 }
 
 .container {
-  background: white;
+  background: $primary-color;
 }
 
 .context-icon {
@@ -105,7 +105,7 @@ $context-icon-width: 16px;
 }
 
 .like-button {
-  margin-left: 2 * $padding;
+  margin-left: $spacing-md;
 }
 
 .name::after, .username::after {
