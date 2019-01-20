@@ -54,7 +54,7 @@ export default {
   }
 
   .nav {
-    margin: 0;
+    margin: $spacing-md 0 0;
     width: 100%;
     max-width: $content-main-width;
   }

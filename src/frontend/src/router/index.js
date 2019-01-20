@@ -17,7 +17,7 @@ export function createRouter () {
     return new VueRouter({
         mode: 'history',
         routes: [
-            { path: '/', component: FeedView },
+            { path: '/feed', component: FeedView },
             { path: '/login', component: LoginView },
             { path: '/signup', component: SignupView },
             { path: '/search', component: SearchView },
@@ -29,7 +29,8 @@ export function createRouter () {
                     { path: 'password', component: PasswordView },
                     { path: '', redirect: 'account' }
                 ]
-            }
+            },
+            { path: '/', redirect: '/feed' }
         ]
     });
 }
