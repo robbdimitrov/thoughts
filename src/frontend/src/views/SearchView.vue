@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <search-term-bar class="search-term-bar" />
+    <search-bar class="search-bar" />
 
     <search-scope-bar class="scope-nav-bar" />
 
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import SearchTermBar from '../components/SearchTermBar.vue';
+import SearchBar from '../components/SearchBar.vue';
 import SearchScopeBar from '../components/SearchScopeBar.vue';
 import ThoughtList from '../components/ThoughtList.vue';
 import UserList from '../components/UserList.vue';
@@ -28,7 +28,7 @@ import UserList from '../components/UserList.vue';
 export default {
   name: 'search-view',
   components: {
-    SearchTermBar,
+    SearchBar,
     SearchScopeBar,
     ThoughtList,
     UserList
@@ -55,6 +55,10 @@ export default {
 
 .user-container {
   margin-bottom: $padding;
+}
+
+.search-bar {
+  margin-top: -$border-width-sm;
 }
 
 .user-header-title {

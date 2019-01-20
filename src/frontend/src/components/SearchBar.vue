@@ -1,41 +1,43 @@
 <template>
   <div class="container">
-    <i class="icon fas fa-search"></i>
-
-    <input
-      class="search-input"
-      type="text"
-      placeholder="Search Thoughts"
-    >
+    <div class="content main-container">
+      <input
+        class="search-input"
+        type="text"
+        placeholder="Start typing..."
+      >
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'search-bar'
+  name: 'search-term-bar'
 };
 </script>
 
 <style lang="scss" scoped>
+@import "../styles/variables";
 @import "../styles/fonts";
 @import "../styles/helpers";
-@import "../styles/colors";
-@import "../styles/variables";
+
+$search-bar-background: #35393C;
 
 .container {
-  display: flex;
-  padding-left: $padding;
-  padding-right: $padding;
+  background: $search-bar-background;
 }
 
-.icon {
-  font-size: 15px;
-  margin-right: $padding / 2;
+.content {
+  padding: $spacing-md 0;
+  display: flex;
 }
 
 .search-input {
-  font-weight: $font-weight-regular;
-  font-size: rem(14);
-  background: $background-color;
+  background: $search-bar-background;
+  font-size: rem(28);
+  color: $primary-color;
+  font-weight: $font-weight-semibold;
+  margin: 0 $spacing-sm;
+  flex: 1;
 }
 </style>

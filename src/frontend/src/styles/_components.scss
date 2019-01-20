@@ -16,7 +16,7 @@ body {
 }
 
 .bottom-shadow {
-  border-bottom: 1px solid $shadow-color;
+  border-bottom: $border-width-sm solid $shadow-color;
 }
 
 .main-content {
@@ -58,7 +58,7 @@ $button-background-color: $active-color;
 
 .outline-button {
   border-style: solid;
-  border-width: 1px;
+  border-width: $border-width-sm;
   height: $button-height;
   padding: 0 $padding;
   border-radius: $button-height / 2;
@@ -117,7 +117,7 @@ $button-background-color: $active-color;
 .user-card .avatar {
   margin: $padding;
   margin-top: -$spacing-md;
-  border: 2px solid $primary-color;
+  border: $border-width-md solid $primary-color;
 }
 
 .user-card .subtitle {

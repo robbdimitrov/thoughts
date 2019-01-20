@@ -2,12 +2,12 @@
   <header class="container bottom-shadow">
     <div class="content main-container">
       <div class="left-items">
-        <router-link to="/" exact class="home-button nav-button">
+        <router-link to="/feed" class="nav-button">
           <i class="nav-button-icon fas fa-home"></i>
           <span class="nav-button-label">Home</span>
         </router-link>
 
-        <router-link to="/search" class="search-button nav-button">
+        <router-link to="/search" class="nav-button">
           <i class="nav-button-icon fas fa-search"></i>
           <span class="nav-button-label">Search</span>
         </router-link>
@@ -16,8 +16,6 @@
       <i class="icon fas fa-brain"></i>
 
       <div class="right-items">
-        <search-bar class="search-bar"></search-bar>
-
         <div class="profile-button" v-on:click="toggleDropdown">
           <img
             class="profile-button-image"
@@ -37,13 +35,11 @@
 </template>
 
 <script>
-import SearchBar from './SearchBar.vue';
 import SettingsMenu from './SettingsMenu.vue';
 
 export default {
   name: 'navigation-bar',
   components: {
-    SearchBar,
     SettingsMenu
   },
   data: function () {
@@ -95,10 +91,9 @@ $icon-font-size: 21px;
 .nav-button {
   text-decoration: none;
   color: $primary-text-color;
-  height: 100%;
   display: flex;
-  box-sizing: border-box;
   align-items: center;
+  margin-right: $padding;
 }
 
 .nav-button.router-link-active {
@@ -113,10 +108,6 @@ $icon-font-size: 21px;
 
 .nav-button-icon {
   font-size: $icon-font-size;
-}
-
-.search-button {
-  margin-left: $padding;
 }
 
 .nav-button-label {
@@ -152,25 +143,6 @@ $icon-font-size: 21px;
 
 .create-button {
   margin-left: $padding;
-}
-
-.search-bar {
-  height: $icon-width;
-  border-radius: $icon-width / 2;
-  background: $background-color;
-  margin-right: $padding;
-}
-
-@media screen and (max-width: $break-md) {
-  .search-bar {
-    display: none;
-  }
-}
-
-@media screen and (min-width: $break-md) {
-  .search-button {
-    display: none;
-  }
 }
 
 @media screen and (max-width: $break-sm) {

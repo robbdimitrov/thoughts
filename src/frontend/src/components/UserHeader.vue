@@ -51,7 +51,7 @@ $cover-height: 100px;
 .avatar {
   margin-top: -$avatar-width-md * 0.8;
   margin-left: $spacing-sm;
-  border: 4px solid $primary-color;
+  border: $border-width-lg solid $primary-color;
   width: $avatar-width-md;
   height: $avatar-width-md;
 }
