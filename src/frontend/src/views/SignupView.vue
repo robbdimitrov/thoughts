@@ -57,6 +57,7 @@
 
       <div class="reference">
         <span class="reference-label">Already have an accout?</span>
+
         <router-link to="/login" class="reference-button">
           <span>Login</span>
         </router-link>

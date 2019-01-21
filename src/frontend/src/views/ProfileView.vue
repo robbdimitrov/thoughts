@@ -46,7 +46,7 @@
 
 <script>
 export default {
-  name: 'edit-profile-view'
+  name: 'profile-view'
 };
 </script>
 
