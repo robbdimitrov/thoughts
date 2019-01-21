@@ -23,7 +23,7 @@
             alt="Profile"
           />
 
-          <settings-menu v-if="showDropdown" />
+          <settings-menu v-if="isDropdownShown" />
         </div>
 
         <button class="button create-button">
@@ -44,12 +44,12 @@ export default {
   },
   data: function () {
     return {
-      showDropdown: false
+      isDropdownShown: false
     };
   },
   methods: {
     toggleDropdown: function () {
-      this.showDropdown = !this.showDropdown;
+      this.isDropdownShown = !this.isDropdownShown;
     }
   }
 };

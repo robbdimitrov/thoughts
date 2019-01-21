@@ -2,7 +2,6 @@
   <div class="container main">
     <user-card class="user-card" />
     <div class="content">
-      <thought-box />
       <thought-list :items="3" />
     </div>
   </div>
@@ -11,12 +10,10 @@
 <script>
 import ThoughtList from '../components/ThoughtList.vue';
 import UserCard from '../components/UserCard.vue';
-import ThoughtBox from '../components/ThoughtBox.vue';
 
 export default {
   name: 'feed-view',
   components: {
-    ThoughtBox,
     ThoughtList,
     UserCard
   }
