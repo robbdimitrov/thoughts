@@ -1,24 +1,30 @@
 <template>
   <div class="container">
-    <img
-      class="avatar"
-      src="https://via.placeholder.com/300.png"
-    />
+    <div class="header">
+      <!-- TODO: Add close button -->
+    </div>
 
-    <form class="input">
-      <textarea
-        type="text"
-        placeholder="What are you thinking?"
-        id="thought"
-        name="thought"
-        class="form-input"
-        required
+    <div class="content">
+      <img
+        class="avatar"
+        src="https://via.placeholder.com/300.png"
       />
 
-      <button class="button submit-button">
-        Create
-      </button>
-    </form>
+      <form class="input">
+        <textarea
+          type="text"
+          placeholder="What are you thinking?"
+          id="thought"
+          name="thought"
+          class="form-input"
+          required
+        />
+
+        <button class="button submit-button">
+          Create
+        </button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -36,9 +42,7 @@ export default {
 $avatar-padding: $avatar-width-sm - $avatar-width-xs + $padding;
 
 .container {
-  display: flex;
-  align-items: flex-start;
-  background: #EAEBEB;
+  background: $primary-color;
 }
 
 form {

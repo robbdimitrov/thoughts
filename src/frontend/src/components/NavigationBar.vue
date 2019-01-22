@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <div class="popup-overlay" v-if="isPopupShown">
+    <div class="overlay" v-if="isPopupShown">
       <thought-box class="popup" />
     </div>
   </header>
@@ -159,7 +159,7 @@ $icon-font-size: 21px;
   margin-left: $padding;
 }
 
-.popup-overlay {
+.overlay {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -171,8 +171,10 @@ $icon-font-size: 21px;
   align-items: center;
 
   .popup {
-    width: $content-secondary-width;
-    // height: 160px;
+    width: 100%;
+    margin: auto;
+    max-width: $content-primary-width;
+    height: 160px;
   }
 }
 
