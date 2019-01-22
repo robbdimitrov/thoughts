@@ -20,3 +20,11 @@
 @mixin active-border {
   border-bottom: $border-width-md solid $active-nav-button-color;
 }
+
+@mixin full-screen {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

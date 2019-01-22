@@ -1,7 +1,13 @@
 <template>
-  <div class="container">
+  <div class="thought-box">
     <div class="header">
-      <!-- TODO: Add close button -->
+      <button class="close-button">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <button class="button submit-button">
+        Create
+      </button>
     </div>
 
     <div class="content">
@@ -10,20 +16,16 @@
         src="https://via.placeholder.com/300.png"
       />
 
-      <form class="input">
-        <textarea
-          type="text"
-          placeholder="What are you thinking?"
-          id="thought"
-          name="thought"
-          class="form-input"
-          required
-        />
+      <textarea
+        type="text"
+        placeholder="What are you thinking?"
+        id="thought"
+        name="thought"
+        class="form-input"
+        required
+      />
 
-        <button class="button submit-button">
-          Create
-        </button>
-      </form>
+      <span class="counter">10/140</span>
     </div>
   </div>
 </template>
@@ -39,20 +41,30 @@ export default {
 @import "../styles/colors";
 @import "../styles/helpers";
 
-$avatar-padding: $avatar-width-sm - $avatar-width-xs + $padding;
-
-.container {
+.thought-box {
   background: $primary-color;
+  border-radius: $border-radius-sm;
+  width: 100%;
+  max-width: $content-primary-width;
 }
 
-form {
-  width: 100%;
-  height: 100%;
+.header {
+  border-bottom: 1px solid black;
+  height: $bar-height;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin: $padding;
-  margin-left: 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  margin-top: $padding;
+}
+
+.close-button {
+  margin-left: $padding;
+  width: $button-height;
+  height: $button-height;
 }
 
 .form-input {
@@ -64,10 +76,12 @@ form {
   @include border-dark;
   resize: none;
   height: 80px;
+  margin: $padding;
+  margin-left: 0;
 }
 
 .submit-button {
-  margin-top: $padding;
+  margin-right: $padding;
 }
 
 .avatar {
@@ -75,6 +89,5 @@ form {
   width: $avatar-width-xs;
   height: $avatar-width-xs;
   margin: $padding;
-  margin-left: $avatar-padding;
 }
 </style>

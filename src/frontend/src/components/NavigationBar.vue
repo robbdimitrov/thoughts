@@ -160,22 +160,11 @@ $icon-font-size: 21px;
 }
 
 .overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba($color: #000000, $alpha: 0.5);
+  @include full-screen;
+  background: $dark-background-color;
   display: flex;
-  align-content: center;
   align-items: center;
-
-  .popup {
-    width: 100%;
-    margin: auto;
-    max-width: $content-primary-width;
-    height: 160px;
-  }
+  justify-content: center;
 }
 
 @media screen and (max-width: $break-sm) {
