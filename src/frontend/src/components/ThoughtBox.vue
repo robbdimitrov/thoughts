@@ -24,9 +24,9 @@
         class="form-input"
         required
       />
-
-      <span class="counter">10/140</span>
     </div>
+
+    <span class="counter">10/140</span>
   </div>
 </template>
 
@@ -49,7 +49,7 @@ export default {
 }
 
 .header {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $shadow-color;
   height: $bar-height;
   display: flex;
   justify-content: space-between;
@@ -68,20 +68,42 @@ export default {
 }
 
 .form-input {
-  box-sizing: border-box;
   width: 100%;
-  height: 100%;
   padding: 6px;
-  border-radius: $border-radius-sm;
-  @include border-dark;
   resize: none;
-  height: 80px;
+  height: 90px;
   margin: $padding;
   margin-left: 0;
+  background: $selected-color;
+  border: 0;
+  border-bottom: 2px solid $active-color;
+  border-radius:
+    $border-radius-sm
+    $border-radius-sm
+    0 0;
+
+  &::placeholder {
+    color: gray;
+  }
+
+  &:focus {
+    outline-width: 0;
+
+    &::placeholder {
+      color: lighten(gray, 20%);
+    }
+  }
 }
 
 .submit-button {
   margin-right: $padding;
+}
+
+.counter {
+  margin: 0 10px 10px;
+  text-align: right;
+  display: block;
+  color: $detail-text-color;
 }
 
 .avatar {

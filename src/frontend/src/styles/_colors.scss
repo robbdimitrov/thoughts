@@ -8,6 +8,7 @@ $secondary-color: darken($primary-color, 5%);
 $selected-color: darken($primary-color, 3%);
 
 $primary-text-color: #333333;
+$detail-text-color: lighten($primary-text-color, 50%);
 $active-color: #1DA1F2;
 
 $active-nav-button-color: darken($active-color, 25%);

@@ -165,6 +165,9 @@ $icon-font-size: 21px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  overflow-y: scroll;
+  z-index: $z-index-popup;
 }
 
 @media screen and (max-width: $break-sm) {
