@@ -1,11 +1,21 @@
 <template>
-  <div class="container">
-    <img
-      class="avatar"
-      src="https://via.placeholder.com/300.png"
-    />
+  <div class="thought-box">
+    <div class="header">
+      <button class="close-button">
+        <i class="fas fa-times"></i>
+      </button>
 
-    <form class="input">
+      <button class="button submit-button">
+        Create
+      </button>
+    </div>
+
+    <div class="content">
+      <img
+        class="avatar"
+        src="https://via.placeholder.com/300.png"
+      />
+
       <textarea
         type="text"
         placeholder="What are you thinking?"
@@ -14,11 +24,9 @@
         class="form-input"
         required
       />
+    </div>
 
-      <button class="button submit-button">
-        Create
-      </button>
-    </form>
+    <span class="counter">10/140</span>
   </div>
 </template>
 
@@ -33,37 +41,69 @@ export default {
 @import "../styles/colors";
 @import "../styles/helpers";
 
-$avatar-padding: $avatar-width-sm - $avatar-width-xs + $padding;
-
-.container {
-  display: flex;
-  align-items: flex-start;
-  background: #EAEBEB;
+.thought-box {
+  background: $primary-color;
+  border-radius: $border-radius-sm;
+  width: 100%;
+  max-width: $content-primary-width;
 }
 
-form {
-  width: 100%;
-  height: 100%;
+.header {
+  border-bottom: 1px solid $shadow-color;
+  height: $bar-height;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin: $padding;
-  margin-left: 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  margin-top: $padding;
+}
+
+.close-button {
+  margin-left: $padding;
+  width: $button-height;
+  height: $button-height;
 }
 
 .form-input {
-  box-sizing: border-box;
   width: 100%;
-  height: 100%;
   padding: 6px;
-  border-radius: $border-radius-sm;
-  @include border-dark;
   resize: none;
-  height: 80px;
+  height: 90px;
+  margin: $padding;
+  margin-left: 0;
+  background: $selected-color;
+  border: 0;
+  border-bottom: 2px solid $active-color;
+  border-radius:
+    $border-radius-sm
+    $border-radius-sm
+    0 0;
+
+  &::placeholder {
+    color: gray;
+  }
+
+  &:focus {
+    outline-width: 0;
+
+    &::placeholder {
+      color: lighten(gray, 20%);
+    }
+  }
 }
 
 .submit-button {
-  margin-top: $padding;
+  margin-right: $padding;
+}
+
+.counter {
+  margin: 0 10px 10px;
+  text-align: right;
+  display: block;
+  color: $detail-text-color;
 }
 
 .avatar {
@@ -71,6 +111,5 @@ form {
   width: $avatar-width-xs;
   height: $avatar-width-xs;
   margin: $padding;
-  margin-left: $avatar-padding;
 }
 </style>

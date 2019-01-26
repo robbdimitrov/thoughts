@@ -16,40 +16,54 @@
       <i class="icon fas fa-brain"></i>
 
       <div class="right-items">
-        <div class="profile-button" v-on:click="toggleDropdown">
+        <div class="profile-button" @click="toggleDropdown">
           <img
             class="profile-button-image"
             src="https://via.placeholder.com/300.png"
             alt="Profile"
           />
 
-          <settings-menu v-if="showDropdown" />
+          <settings-menu v-if="isDropdownShown" />
         </div>
 
-        <button class="button create-button">
+        <button class="button create-button" @click="showPopup">
           Create
         </button>
       </div>
+    </div>
+
+    <div class="overlay" v-if="isPopupShown">
+      <thought-box class="popup" />
     </div>
   </header>
 </template>
 
 <script>
 import SettingsMenu from './SettingsMenu.vue';
+import ThoughtBox from './ThoughtBox.vue';
 
 export default {
   name: 'navigation-bar',
   components: {
-    SettingsMenu
+    SettingsMenu,
+    ThoughtBox
   },
   data: function () {
     return {
-      showDropdown: false
+      isDropdownShown: false,
+      isPopupShown: false
     };
   },
   methods: {
     toggleDropdown: function () {
-      this.showDropdown = !this.showDropdown;
+      this.isDropdownShown = !this.isDropdownShown;
+      console.log('herro there!');
+    },
+    showPopup: function () {
+      this.isPopupShown = true;
+    },
+    hidePopup: function () {
+      this.isPopupShown = false;
     }
   }
 };
@@ -143,6 +157,17 @@ $icon-font-size: 21px;
 
 .create-button {
   margin-left: $padding;
+}
+
+.overlay {
+  @include full-screen;
+  background: $dark-background-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  overflow-y: scroll;
+  z-index: $z-index-popup;
 }
 
 @media screen and (max-width: $break-sm) {
