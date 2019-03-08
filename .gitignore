@@ -5,6 +5,9 @@ Thumbs.db
 node_modules
 dist
 
+# Python
+venv
+
 # env
 .env.local
 .env.*.local
