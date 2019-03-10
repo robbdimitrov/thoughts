@@ -16,7 +16,7 @@
       <i class="icon fas fa-brain"></i>
 
       <div class="right-items">
-        <div class="profile-button" @click="toggleDropdown">
+        <div class="profile-button" v-on:click="toggleDropdown">
           <img
             class="profile-button-image"
             src="https://via.placeholder.com/300.png"
@@ -26,14 +26,18 @@
           <settings-menu v-if="isDropdownShown" />
         </div>
 
-        <button class="button create-button" @click="showPopup">
+        <button class="button create-button" v-on:click="showPopup">
           Create
         </button>
       </div>
     </div>
 
     <div class="overlay" v-if="isPopupShown">
-      <thought-box class="popup" />
+      <thought-box
+        class="popup"
+        v-on:close-popup="hidePopup"
+        v-on:create-post="createPost"
+      />
     </div>
   </header>
 </template>
@@ -57,13 +61,15 @@ export default {
   methods: {
     toggleDropdown: function () {
       this.isDropdownShown = !this.isDropdownShown;
-      console.log('herro there!');
     },
     showPopup: function () {
       this.isPopupShown = true;
     },
     hidePopup: function () {
       this.isPopupShown = false;
+    },
+    createPost: function (text) {
+      console.log(`Create Post: ${text}`)
     }
   }
 };

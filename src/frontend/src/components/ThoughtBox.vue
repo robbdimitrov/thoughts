@@ -1,11 +1,11 @@
 <template>
   <div class="thought-box">
     <div class="header">
-      <button class="close-button">
+      <button class="close-button" v-on:click="$emit('close-popup')">
         <i class="fas fa-times"></i>
       </button>
 
-      <button class="button submit-button">
+      <button class="button submit-button" v-on:click="$emit('create-post')">
         Create
       </button>
     </div>
