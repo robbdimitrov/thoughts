@@ -1,11 +1,15 @@
 <template>
   <div class="thought-box">
     <div class="header">
-      <button class="close-button">
+      <button class="close-button" v-on:click="$emit('close-popup')">
         <i class="fas fa-times"></i>
       </button>
 
-      <button class="button submit-button">
+      <button
+        class="button submit-button"
+        v-bind:disabled="!isMessageValid"
+        @click="$emit('create-post', message)"
+      >
         Create
       </button>
     </div>
@@ -22,17 +26,31 @@
         id="thought"
         name="thought"
         class="form-input"
+        v-model="message"
         required
       />
     </div>
 
-    <span class="counter">10/140</span>
+    <span  class="counter" v-bind:class='{ invalid: message.length > maxLength }'>
+      {{message.length}}/{{maxLength}}
+    </span>
   </div>
 </template>
 
 <script scoped>
 export default {
-  name: 'thought-box'
+  name: 'thought-box',
+  data: function () {
+    return {
+      message: '',
+      maxLength: 140
+    };
+  },
+  computed: {
+    isMessageValid: function () {
+      return this.message.length > 0 && this.message.length <= this.maxLength;
+    }
+  }
 };
 </script>
 
@@ -104,6 +122,10 @@ export default {
   text-align: right;
   display: block;
   color: $detail-text-color;
+
+  &.invalid {
+    color: red;
+  }
 }
 
 .avatar {
