@@ -56,6 +56,10 @@ $button-background-color: $active-color;
       background: darken($button-background-color, 25%);
     }
   }
+
+  &:disabled {
+    background: lighten($button-background-color, 25%);
+  }
 }
 
 .outline-button {
