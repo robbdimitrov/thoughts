@@ -97,7 +97,7 @@ $icon-font-size: 21px;
 }
 
 .nav-button.router-link-active {
-  color: $active-nav-button-color;
+  color: $active-button-color;
   @include active-border;
   margin-top: $border-width-md;
 }

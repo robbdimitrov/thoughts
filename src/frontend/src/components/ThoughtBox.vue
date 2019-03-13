@@ -108,7 +108,7 @@ export default {
     outline-width: 0;
 
     &::placeholder {
-      color: lighten(gray, 20%);
+      color: lighten($text-placeholder-color, 20%);
     }
   }
 }
@@ -124,7 +124,7 @@ export default {
   color: $detail-text-color;
 
   &.invalid {
-    color: red;
+    color: $error-color;
   }
 }
 

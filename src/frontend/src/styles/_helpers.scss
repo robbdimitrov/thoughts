@@ -18,7 +18,7 @@
 }
 
 @mixin active-border {
-  border-bottom: $border-width-md solid $active-nav-button-color;
+  border-bottom: $border-width-md solid $active-button-color;
 }
 
 @mixin full-screen {

@@ -33,7 +33,7 @@ export default {
 @import "../styles/helpers";
 
 .dropdown {
-  background: white;
+  background: $primary-color;
   @include border;
   box-shadow: 0 3px 12px $shadow-color;
 }

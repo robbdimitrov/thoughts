@@ -6,9 +6,10 @@ $dark-background-color: rgba(0, 0, 0, 0.5);
 $primary-color: white;
 $secondary-color: darken($primary-color, 5%);
 $selected-color: darken($primary-color, 3%);
+$active-color: #1DA1F2;
+$error-color: red;
+$active-button-color: darken($active-color, 25%);
 
 $primary-text-color: #333333;
 $detail-text-color: lighten($primary-text-color, 50%);
-$active-color: #1DA1F2;
-
-$active-nav-button-color: darken($active-color, 25%);
+$text-placeholder-color: gray;
