@@ -1,24 +1,6 @@
-from flask import Flask
-import os
+from userservice import create_app
 
-
-app = Flask(__name__)
-
-if os.getenv('FLASK_ENV') == 'development':
-    app.config.from_object('config.DevelopmentConfig')
-else:
-    app.config.from_object('config.Config')
-
-
-@app.route('/')
-def hello():
-    return 'Hello, World!'
-
-
-@app.route('/<name>')
-def hello_name(name):
-    return 'Hello {}!'.format(name)
-
+app = create_app()
 
 if __name__ == '__main__':
     app.run()
