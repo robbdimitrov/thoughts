@@ -27,11 +27,6 @@ $ docker exec -it pg-docker psql -U postgres
 
 https://github.com/GoogleCloudPlatform/microservices-demo
 
-## Kubernetes
-
-Deploying postgres:
-- https://kubernetes.io/blog/2017/02/postgresql-clusters-kubernetes-statefulsets/
-
 ## License
 
 Licensed under the [MIT](LICENSE) License.
