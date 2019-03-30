@@ -21,6 +21,8 @@ def close_db(e=None):
         db.close()
 
 
+@click.command('init-db')
+@with_appcontext
 def init_db():
     db = get_db()
 
@@ -29,14 +31,9 @@ def init_db():
         cur.execute(f.read().decode('utf8'))
         cur.close()
 
-
-@click.command('init-db')
-@with_appcontext
-def init_db_command():
-    init_db()
     click.echo('Initialized the database.')
 
 
 def init_app(app):
     app.teardown_appcontext(close_db)
-    app.cli.add_command(init_db_command)
+    app.cli.add_command(init_db)

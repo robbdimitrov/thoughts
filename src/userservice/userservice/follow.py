@@ -3,6 +3,8 @@ from flask import (
 )
 from werkzeug.security import check_password_hash, generate_password_hash
 
+from userservice import db
+
 
 bp = Blueprint('follow', __name__)
 
