@@ -42,6 +42,7 @@ def get_user(username):
         ''',
         (username,))
     result = cur.fetchone()
+    cur.close()
 
     if result == None:
         return None
@@ -58,10 +59,14 @@ def get_user(username):
 
 
 def update_user(username):
+    # TODO: Get body from request
+    # TODO: Implement
     pass
 
 
 def update_user_field(username):
+    # TODO: Get body from request
+    # TODO: Implement
     pass
 
 def delete_user(username):
@@ -74,3 +79,4 @@ def delete_user(username):
         ''',
         (username,))
     conn.commit()
+    cur.close()

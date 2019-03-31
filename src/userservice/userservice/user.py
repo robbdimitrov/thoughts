@@ -55,17 +55,19 @@ def get_user(username):
 
 @bp.route('/users/<username>', methods=['UPDATE'])
 def update_user(username):
+    # TODO: Check for valid auth token with decorator
     return make_response(jsonify({'response': 'Update user'}), 200)
 
 
 @bp.route('/users/<username>', methods=['PUT'])
 def update_user_field(username):
+    # TODO: Check for valid auth token with decorator
     return make_response(jsonify({'response': 'Update user field'}), 200)
 
 
 @bp.route('/users/<username>', methods=['DELETE'])
 def delete_user(username):
-    # TODO: Check for valid auth token
+    # TODO: Check for valid auth token with decorator
     db_client.delete_user(username)
 
     return make_response(jsonify({'response': f'Deleted user {username}'}),
