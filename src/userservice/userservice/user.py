@@ -45,7 +45,12 @@ def create_user():
 
 @bp.route('/users/<username>', methods=['GET'])
 def get_user(username):
-    return make_response(jsonify({'response': 'Get user'}), 200)
+    user = db_client.get_user(username)
+
+    if user == None:
+        return make_response(jsonify({'error': 'Not found.'}), status.NOT_FOUND)
+
+    return make_response(jsonify({'user': user}), status.OK)
 
 
 @bp.route('/users/<username>', methods=['UPDATE'])
@@ -60,4 +65,8 @@ def update_user_field(username):
 
 @bp.route('/users/<username>', methods=['DELETE'])
 def delete_user(username):
-    return make_response(jsonify({'response': 'Delete user'}), 200)
+    # TODO: Check for valid auth token
+    db_client.delete_user(username)
+
+    return make_response(jsonify({'response': f'Deleted user {username}'}),
+        status.OK)

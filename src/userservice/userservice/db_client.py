@@ -1,5 +1,4 @@
 import psycopg2
-from psycopg2 import errorcodes
 from userservice import db
 
 
@@ -28,7 +27,50 @@ def create_user(username, email, name, password):
             (username, email, name, password))
         conn.commit()
     except psycopg2.Error as e:
-        name = errorcodes.lookup(e.pgcode)
-        print(f'exception {name} error: {str(e)}')
+        print(f'Error creating user: {str(e)}')
     finally:
         cur.close()
+
+
+def get_user(username):
+    conn = db.get_db()
+    cur = conn.cursor()
+
+    cur.execute('''
+        SELECT id, username, email, name, bio, reg_date FROM thoughts.user
+        WHERE username = %s
+        ''',
+        (username,))
+    result = cur.fetchone()
+
+    if result == None:
+        return None
+
+    user = {
+        'id': result[0],
+        'username': result[1],
+        'email': result[2],
+        'name': result[3],
+        'bio': result[4],
+        'reg_date': result[5]
+    }
+    return user
+
+
+def update_user(username):
+    pass
+
+
+def update_user_field(username):
+    pass
+
+def delete_user(username):
+    conn = db.get_db()
+    cur = conn.cursor()
+
+    cur.execute('''
+        DELETE FROM thoughts.user
+        WHERE username = %s
+        ''',
+        (username,))
+    conn.commit()
