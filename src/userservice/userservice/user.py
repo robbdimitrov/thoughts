@@ -1,16 +1,49 @@
 from flask import (
-    Blueprint, redirect, request, session, url_for, make_response, jsonify
+    Blueprint, request, make_response, jsonify
 )
-from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.security import generate_password_hash
+import re
 
-from userservice import db
+from userservice import db, status
 
 
 bp = Blueprint('user', __name__)
 
 @bp.route('/users', methods=['POST'])
 def create_user():
-    return make_response(jsonify({'response': 'Create user'}), 200)
+    content = request.get_json()
+
+    username = content.get('username')
+    email = content.get('email')
+    name = content.get('name') or ''
+    password = content.get('password')
+
+    if username == None or username == '':
+        error = 'Username is missing.'
+    elif email == None or email == '':
+        error = 'Email is missing.'
+    elif re.match(r'[^@]+@[^@]+\.[^@]+', email) == None:
+        error = 'Invalid email address.'
+    elif password == None:
+        error = 'Password is missing'
+    else:
+        error = None
+
+    if error != None:
+        return make_response(jsonify({'error': error}), status.BAD_REQUEST)
+
+    password = generate_password_hash(password)
+
+    cur = db.get_db().cursor()
+    cur.execute('''
+        INSERT INTO thoughts.user(username, email, name, password)
+        VALUES(%s, %s, %s, %s);
+        ''',
+        (username, email, name, password))
+    cur.close()
+
+    return make_response(jsonify({'response': f'Created user {email}.'}),
+        status.CREATED)
 
 
 @bp.route('/users/<username>', methods=['GET'])

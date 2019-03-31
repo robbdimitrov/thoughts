@@ -1,7 +1,6 @@
 from flask import (
-    Blueprint, redirect, request, session, url_for, make_response, jsonify
+    Blueprint, request, make_response, jsonify
 )
-from werkzeug.security import check_password_hash, generate_password_hash
 
 from userservice import db
 
