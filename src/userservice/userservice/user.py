@@ -4,7 +4,7 @@ from flask import (
 from werkzeug.security import generate_password_hash
 import re
 
-from userservice import db, status
+from userservice import status, db_client
 
 
 bp = Blueprint('user', __name__)
@@ -34,16 +34,13 @@ def create_user():
 
     password = generate_password_hash(password)
 
-    cur = db.get_db().cursor()
-    cur.execute('''
-        INSERT INTO thoughts.user(username, email, name, password)
-        VALUES(%s, %s, %s, %s);
-        ''',
-        (username, email, name, password))
-    cur.close()
-
-    return make_response(jsonify({'response': f'Created user {email}.'}),
-        status.CREATED)
+    try:
+        db_client.create_user(username, email, name, password)
+    except Exception as e:
+        return make_response(jsonify({'error': str(e)}), status.BAD_REQUEST)
+    else:
+        return make_response(jsonify({'response': f'Created user {email}.'}),
+            status.CREATED)
 
 
 @bp.route('/users/<username>', methods=['GET'])

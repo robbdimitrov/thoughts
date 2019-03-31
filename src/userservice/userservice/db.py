@@ -29,6 +29,7 @@ def init_db():
     with current_app.open_resource('schema.sql') as f:
         cur = db.cursor()
         cur.execute(f.read().decode('utf8'))
+        db.commit()
         cur.close()
 
     click.echo('Initialized the database.')
