@@ -13,7 +13,7 @@ def create_user(username, email, name, password):
         (username, email))
     existing_user = cur.fetchone()
 
-    if existing_user != None:
+    if existing_user is not None:
         if existing_user[0] == username:
             raise Exception('User with this username already exists.')
         else:
@@ -44,7 +44,7 @@ def get_user(username):
     result = cur.fetchone()
     cur.close()
 
-    if result == None:
+    if result is None:
         return None
 
     user = {

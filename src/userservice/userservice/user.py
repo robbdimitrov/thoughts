@@ -18,18 +18,18 @@ def create_user():
     name = content.get('name') or ''
     password = content.get('password')
 
-    if username == None or username == '':
+    if username is None or username == '':
         error = 'Username is missing.'
-    elif email == None or email == '':
+    elif email is None or email == '':
         error = 'Email is missing.'
-    elif re.match(r'[^@]+@[^@]+\.[^@]+', email) == None:
+    elif re.match(r'[^@]+@[^@]+\.[^@]+', email) is None:
         error = 'Invalid email address.'
-    elif password == None:
+    elif password is None:
         error = 'Password is missing'
     else:
         error = None
 
-    if error != None:
+    if error is not None:
         return make_response(jsonify({'error': error}), status.BAD_REQUEST)
 
     password = generate_password_hash(password)
@@ -47,7 +47,7 @@ def create_user():
 def get_user(username):
     user = db_client.get_user(username)
 
-    if user == None:
+    if user is None:
         return make_response(jsonify({'error': 'Not found.'}), status.NOT_FOUND)
 
     return make_response(jsonify({'user': user}), status.OK)
