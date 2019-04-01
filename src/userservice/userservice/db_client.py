@@ -2,6 +2,10 @@ import psycopg2
 from userservice import db
 
 
+class DBException(Exception):
+    pass
+
+
 def create_user(username, email, name, password):
     conn = db.get_db()
     cur = conn.cursor()
@@ -15,9 +19,9 @@ def create_user(username, email, name, password):
 
     if existing_user is not None:
         if existing_user[0] == username:
-            raise Exception('User with this username already exists.')
+            raise DBException('User with this username already exists.')
         else:
-            raise Exception('User with this email already exists.')
+            raise DBException('User with this email already exists.')
 
     try:
         cur.execute('''
@@ -37,7 +41,8 @@ def get_user(username):
     cur = conn.cursor()
 
     cur.execute('''
-        SELECT id, username, email, name, bio, reg_date FROM thoughts.user
+        SELECT id, username, email, name, bio,
+        to_char(reg_date, 'DD-MM-YYYY"T"HH24:MI:SS') FROM thoughts.user
         WHERE username = %s
         ''',
         (username,))
@@ -58,13 +63,13 @@ def get_user(username):
     return user
 
 
-def update_user(username):
+def update_user(username, changes):
     # TODO: Get body from request
     # TODO: Implement
     pass
 
 
-def update_user_field(username):
+def update_user_field(username, changes):
     # TODO: Get body from request
     # TODO: Implement
     pass

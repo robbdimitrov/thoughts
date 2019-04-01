@@ -5,12 +5,15 @@ from werkzeug.security import generate_password_hash
 import re
 
 from userservice import status, db_client
+from userservice.db_client import DBException
 
 
 bp = Blueprint('user', __name__)
 
 @bp.route('/users', methods=['POST'])
 def create_user():
+    """Validates input and creates new user account."""
+
     content = request.get_json()
 
     username = content.get('username')
@@ -36,7 +39,7 @@ def create_user():
 
     try:
         db_client.create_user(username, email, name, password)
-    except Exception as e:
+    except DBException as e:
         return make_response(jsonify({'error': str(e)}), status.BAD_REQUEST)
     else:
         return make_response(jsonify({'response': f'Created user {email}.'}),
@@ -45,6 +48,8 @@ def create_user():
 
 @bp.route('/users/<username>', methods=['GET'])
 def get_user(username):
+    """Gets user with username from the database."""
+
     user = db_client.get_user(username)
 
     if user is None:
@@ -55,18 +60,21 @@ def get_user(username):
 
 @bp.route('/users/<username>', methods=['UPDATE'])
 def update_user(username):
+    """Updated all user fields to a user with a given id."""
     # TODO: Check for valid auth token with decorator
     return make_response(jsonify({'response': 'Update user'}), 200)
 
 
 @bp.route('/users/<username>', methods=['PUT'])
 def update_user_field(username):
+    """Updates only fields with changes for a user with username."""
     # TODO: Check for valid auth token with decorator
     return make_response(jsonify({'response': 'Update user field'}), 200)
 
 
 @bp.route('/users/<username>', methods=['DELETE'])
 def delete_user(username):
+    """Deleted a user if it matches the logged in user."""
     # TODO: Check for valid auth token with decorator
     db_client.delete_user(username)
 
