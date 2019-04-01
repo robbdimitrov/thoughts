@@ -63,16 +63,25 @@ def get_user(username):
     return user
 
 
-def update_user(username, changes):
-    # TODO: Get body from request
-    # TODO: Implement
-    pass
+def update_user(username, updates):
+    conn = db.get_db()
+    cur = conn.cursor()
 
+    values = list(map(lambda key: f'{key} = \'{updates[key]}\'',
+        list(updates.keys())))
 
-def update_user_field(username, changes):
-    # TODO: Get body from request
-    # TODO: Implement
-    pass
+    command = f'''UPDATE thoughts.user SET {', '.join(values)}
+    WHERE username = %s;'''
+    print(command)
+    try:
+        cur.execute(command, (username,))
+        conn.commit()
+    except psycopg2.Error as e:
+        print(f'Error updating user: {str(e)}')
+        raise DBException('Updating user failed.')
+    finally:
+        cur.close()
+
 
 def delete_user(username):
     conn = db.get_db()

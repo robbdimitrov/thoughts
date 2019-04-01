@@ -58,18 +58,18 @@ def get_user(username):
     return make_response(jsonify({'user': user}), status.OK)
 
 
-@bp.route('/users/<username>', methods=['UPDATE'])
+@bp.route('/users/<username>', methods=['PUT', 'UPDATE'])
 def update_user(username):
-    """Updated all user fields to a user with a given id."""
+    """Updated user with passed updated information"""
     # TODO: Check for valid auth token with decorator
+    # TODO: Validate passed information
+    # TODO: Return correct response
+    # TODO: Handle password change
+
+    content = request.get_json()
+
+    db_client.update_user(username, content)
     return make_response(jsonify({'response': 'Update user'}), 200)
-
-
-@bp.route('/users/<username>', methods=['PUT'])
-def update_user_field(username):
-    """Updates only fields with changes for a user with username."""
-    # TODO: Check for valid auth token with decorator
-    return make_response(jsonify({'response': 'Update user field'}), 200)
 
 
 @bp.route('/users/<username>', methods=['DELETE'])
