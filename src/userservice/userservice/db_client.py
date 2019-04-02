@@ -63,16 +63,40 @@ def get_user(username):
     return user
 
 
+def get_user_password_hash(username):
+    conn = db.get_db()
+    cur = conn.cursor()
+
+    cur.execute('''
+        SELECT id, password,
+        FROM thoughts.user
+        WHERE username = %s
+        ''',
+        (username,))
+    result = cur.fetchone()
+    cur.close()
+
+    if result is None:
+        return None
+
+    user = {
+        'id': result[0],
+        'password': result[1]
+    }
+    return user
+
+
 def update_user(username, updates):
     conn = db.get_db()
     cur = conn.cursor()
 
-    values = list(map(lambda key: f'{key} = \'{updates[key]}\'',
-        list(updates.keys())))
+    values = []
+    for key, value in updates.items():
+        values.append(f"{key} = '{value}'")
 
-    command = f'''UPDATE thoughts.user SET {', '.join(values)}
-    WHERE username = %s;'''
-    print(command)
+    command = f"UPDATE thoughts.user SET {', '.join(values)} \
+        WHERE username = %s;"
+
     try:
         cur.execute(command, (username,))
         conn.commit()

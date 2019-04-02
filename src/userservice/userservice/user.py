@@ -1,11 +1,13 @@
 from flask import (
     Blueprint, request, make_response, jsonify
 )
-from werkzeug.security import generate_password_hash
-import re
+from werkzeug.security import (
+    generate_password_hash, check_password_hash
+)
 
 from userservice import status, db_client
 from userservice.db_client import DBException
+from userservice.helpers import validate_email
 
 
 bp = Blueprint('user', __name__)
@@ -25,7 +27,7 @@ def create_user():
         error = 'Username is missing.'
     elif email is None or email == '':
         error = 'Email is missing.'
-    elif re.match(r'[^@]+@[^@]+\.[^@]+', email) is None:
+    elif validate_email(email) == False:
         error = 'Invalid email address.'
     elif password is None:
         error = 'Password is missing'
@@ -42,7 +44,7 @@ def create_user():
     except DBException as e:
         return make_response(jsonify({'error': str(e)}), status.BAD_REQUEST)
     else:
-        return make_response(jsonify({'response': f'Created user {email}.'}),
+        return make_response(jsonify({'response': f'Created user {username}.'}),
             status.CREATED)
 
 
@@ -62,14 +64,48 @@ def get_user(username):
 def update_user(username):
     """Updated user with passed updated information"""
     # TODO: Check for valid auth token with decorator
-    # TODO: Validate passed information
-    # TODO: Return correct response
-    # TODO: Handle password change
 
     content = request.get_json()
+    changes = {}
+    allowed_keys = ['username', 'email', 'name', 'bio', 'password']
 
-    db_client.update_user(username, content)
-    return make_response(jsonify({'response': 'Update user'}), 200)
+    for key, value in content.items():
+        if key in allowed_keys:
+            changes[key] = value
+
+    error = None
+
+    if 'password' in changes:
+        if 'current_password' not in changes:
+            error = 'Current password is missing.'
+        else:
+            password = changes.get('password')
+            current_password = changes.get('currentPassword')
+
+            saved_password = db_client.get_user_password_hash(username)
+            if check_password_hash(saved_password, current_password) == False:
+                error = 'Wrong password.'
+
+            password = generate_password_hash(password)
+            changes['password'] = password
+
+    email = content.get('email')
+
+    if email is not None and validate_email(email) == False:
+        error = 'Invalid email address.'
+
+    if error is not None:
+        return make_response(jsonify({'error': error}),
+            status.BAD_REQUEST)
+
+    try:
+        db_client.update_user(username, changes)
+    except:
+        return make_response(jsonify({'error': 'User update failed.'}),
+            status.BAD_REQUEST)
+    else:
+        return make_response(jsonify({'response': f'Updated user {username}.'}),
+            status.OK)
 
 
 @bp.route('/users/<username>', methods=['DELETE'])
@@ -78,5 +114,5 @@ def delete_user(username):
     # TODO: Check for valid auth token with decorator
     db_client.delete_user(username)
 
-    return make_response(jsonify({'response': f'Deleted user {username}'}),
+    return make_response(jsonify({'response': f'Deleted user {username}.'}),
         status.OK)
