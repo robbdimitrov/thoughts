@@ -11,7 +11,7 @@ def create_user(username, email, name, password):
     cur = conn.cursor()
 
     cur.execute('''
-        SELECT username, email FROM thoughts.user
+        SELECT username, email FROM thoughts.users
         WHERE username = %s OR email = %s
         ''',
         (username, email))
@@ -25,7 +25,7 @@ def create_user(username, email, name, password):
 
     try:
         cur.execute('''
-            INSERT INTO thoughts.user(username, email, name, password)
+            INSERT INTO thoughts.users(username, email, name, password)
             VALUES(%s, %s, %s, %s);
             ''',
             (username, email, name, password))
@@ -42,7 +42,7 @@ def get_user(username):
 
     cur.execute('''
         SELECT id, username, email, name, bio,
-        to_char(reg_date, 'DD-MM-YYYY"T"HH24:MI:SS') FROM thoughts.user
+        to_char(reg_date, 'DD-MM-YYYY"T"HH24:MI:SS') FROM thoughts.users
         WHERE username = %s
         ''',
         (username,))
@@ -69,7 +69,7 @@ def get_user_password_hash(username):
 
     cur.execute('''
         SELECT id, password,
-        FROM thoughts.user
+        FROM thoughts.users
         WHERE username = %s
         ''',
         (username,))
@@ -94,7 +94,7 @@ def update_user(username, updates):
     for key, value in updates.items():
         values.append(f"{key} = '{value}'")
 
-    command = f"UPDATE thoughts.user SET {', '.join(values)} \
+    command = f"UPDATE thoughts.users SET {', '.join(values)} \
         WHERE username = %s;"
 
     try:
@@ -112,9 +112,57 @@ def delete_user(username):
     cur = conn.cursor()
 
     cur.execute('''
-        DELETE FROM thoughts.user
+        DELETE FROM thoughts.users
         WHERE username = %s
         ''',
         (username,))
     conn.commit()
     cur.close()
+
+
+def get_followers(username):
+    pass
+
+
+def get_following(username):
+    pass
+
+
+def follow_user(username, follower_username):
+    conn = db.get_db()
+    cur = conn.cursor()
+
+    cur.execute('''
+        SELECT id, username FROM thoughts.users
+        WHERE username IN (%s, %s)
+        ''',
+        (username, follower_username))
+    users = cur.fetchall()
+
+    if len(users) < 2:
+        raise DBException('Wrong username.')
+
+    user = None
+    follower = None
+
+    for u in users:
+        if u['username'] == username:
+            user = u
+        else:
+            follower = u
+
+    try:
+        cur.execute('''
+            INSERT INTO thoughts.followers
+            VALUES(%s, %s);
+            ''',
+            (user['id'], follower['id']))
+        conn.commit()
+    except psycopg2.Error as e:
+        print(f'Error following user: {str(e)}')
+    finally:
+        cur.close()
+
+
+def unfollow_user(username):
+    pass
