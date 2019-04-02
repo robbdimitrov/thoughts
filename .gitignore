@@ -7,10 +7,10 @@ dist
 
 # Python
 venv
+__pycache__
 
 # env
-.env.local
-.env.*.local
+.env
 
 # Logs
 npm-debug.log*
