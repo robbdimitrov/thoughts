@@ -121,42 +121,38 @@ def delete_user(username):
 
 
 def get_followers(username):
+    # select name, username from demo.followers, demo.users where user_id = 4;
     pass
 
 
 def get_following(username):
+    # select name, username from demo.followers, demo.users where follower_id = 4;
     pass
 
 
-def follow_user(username, follower_username):
+def follow_user(username, follower_id):
     conn = db.get_db()
     cur = conn.cursor()
 
     cur.execute('''
-        SELECT id, username FROM thoughts.users
-        WHERE username IN (%s, %s)
+        SELECT id FROM thoughts.users
+        WHERE username = %s
         ''',
-        (username, follower_username))
-    users = cur.fetchall()
+        (username,))
+    user = cur.fetchone()
 
-    if len(users) < 2:
+    if user is None:
         raise DBException('Wrong username.')
 
-    user = None
-    follower = None
-
-    for u in users:
-        if u['username'] == username:
-            user = u
-        else:
-            follower = u
+    if user['id'] == follower_id:
+        raise DBException('You can\'t follow yourself.')
 
     try:
         cur.execute('''
             INSERT INTO thoughts.followers
             VALUES(%s, %s);
             ''',
-            (user['id'], follower['id']))
+            (user['id'], follower_id))
         conn.commit()
     except psycopg2.Error as e:
         print(f'Error following user: {str(e)}')
@@ -165,4 +161,5 @@ def follow_user(username, follower_username):
 
 
 def unfollow_user(username):
+    # delete from demo.followers where user_id = 3, follower_id = 2;
     pass
