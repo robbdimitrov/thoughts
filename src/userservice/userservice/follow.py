@@ -32,7 +32,7 @@ def get_following(username):
     return make_response(jsonify({'users': users}), status.OK)
 
 
-@bp.route('/users/<username>/following', methods=['POST', 'DELETE'])
+@bp.route('/users/<username>/following', methods=['POST'])
 def follow_user(username):
     """Follows or unfollows a user with the current user."""
 
