@@ -120,14 +120,68 @@ def delete_user(username):
     cur.close()
 
 
-def get_followers(username):
-    # select name, username from demo.followers, demo.users where user_id = 4;
-    pass
+def get_followers(username, page, limit):
+    conn = db.get_db()
+    cur = conn.cursor()
+
+    cur.execute('''
+        SELECT id, username, email, name, bio,
+        to_char(reg_date, 'DD-MM-YYYY"T"HH24:MI:SS')
+        FROM thoughts.users, thoughts.followers
+        WHERE user_id = (SELECT id FROM thoughts.users WHERE username = %s)
+        AND follower_id = id
+        OFFSET %s, LIMIT %s;
+        ''',
+        (username, page * limit, limit))
+    results = cur.fetchall()
+    cur.close()
+
+    if results is None:
+        return None
+
+    users = []
+    for result in results:
+        users.append({
+            'id': result[0],
+            'username': result[1],
+            'email': result[2],
+            'name': result[3],
+            'bio': result[4],
+            'reg_date': result[5]
+        })
+    return users
 
 
-def get_following(username):
-    # select name, username from demo.followers, demo.users where follower_id = 4;
-    pass
+def get_following(username, page, limit):
+    conn = db.get_db()
+    cur = conn.cursor()
+
+    cur.execute('''
+        SELECT id, username, email, name, bio,
+        to_char(reg_date, 'DD-MM-YYYY"T"HH24:MI:SS')
+        FROM thoughts.users, thoughts.followers
+        WHERE follower_id = (SELECT id FROM thoughts.users WHERE username = %s)
+        AND user_id = id
+        OFFSET %s, LIMIT %s;
+        ''',
+        (username, page * limit, limit))
+    results = cur.fetchall()
+    cur.close()
+
+    if results is None:
+        return None
+
+    users = []
+    for result in results:
+        users.append({
+            'id': result[0],
+            'username': result[1],
+            'email': result[2],
+            'name': result[3],
+            'bio': result[4],
+            'reg_date': result[5]
+        })
+    return users
 
 
 def follow_user(username, follower_id):
@@ -160,6 +214,15 @@ def follow_user(username, follower_id):
         cur.close()
 
 
-def unfollow_user(username):
-    # delete from demo.followers where user_id = 3, follower_id = 2;
-    pass
+def unfollow_user(username, user_id):
+    conn = db.get_db()
+    cur = conn.cursor()
+
+    cur.execute('''
+        DELETE FROM thoughts.followers
+        WHERE user_id = (SELECT id FROM thoughts.users WHERE username = %s)
+        AND follower_id = %s;
+        ''',
+        (username, user_id))
+    conn.commit()
+    cur.close()

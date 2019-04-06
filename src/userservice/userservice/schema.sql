@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS thoughts.users (
   reg_date timestamp NOT NULL DEFAULT current_timestamp
 );
 
-CREATE TABLE IF NOT EXISTS thoughts.followers {
+CREATE TABLE IF NOT EXISTS thoughts.followers (
   user_id integer REFERENCES thoughts.users(id),
   follower_id integer REFERENCES thoughts.users(id)
-}
+);
