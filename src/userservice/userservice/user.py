@@ -40,11 +40,15 @@ def create_user():
 
     try:
         db_client.create_user(username, email, name, password)
+    except db_client.ExistingUserException as e:
+        error = {'code': 400, 'error': 'USER_EXISTS', 'message': str(e)}
+        return make_response(jsonify(error), 400)
     except db_client.DBException as e:
-        return make_response(jsonify({'error': str(e)}), 400)
+        error = {'code': 400, 'error': 'BAD_REQUEST', 'message': str(e)}
+        return make_response(jsonify(error), 400)
     else:
-        return make_response(jsonify({'response': f'Created user {username}.'}),
-            201)
+        success = {'message': f'Created user {username}.'}
+        return make_response(jsonify(success), 201)
 
 
 @bp.route('/users/<username>', methods=['GET'])
@@ -54,9 +58,10 @@ def get_user(username):
     user = db_client.get_user(username)
 
     if user is None:
-        return make_response(jsonify({'error': 'Not found.'}), 404)
+        error = {'code': 404, 'error': 'NOT_FOUND', 'message': 'User not found.'}
+        return make_response(jsonify(error), 404)
 
-    return make_response(jsonify({'user': user}), 200)
+    return make_response(jsonify(user), 200)
 
 
 @bp.route('/users/<username>', methods=['PUT', 'UPDATE'])
@@ -72,18 +77,21 @@ def update_user(username):
         if key in allowed_keys:
             changes[key] = value
 
-    error = None
+    error_message = None
+    error_type = None
 
     if 'password' in changes:
         if 'current_password' not in changes:
-            error = 'Current password is missing.'
+            error_message = 'Current password is missing.'
+            error_type = 'MISSING_PASSWORD'
         else:
             password = changes.get('password')
             current_password = changes.get('currentPassword')
 
             saved_password = db_client.get_user_password_hash(username)
             if check_password_hash(saved_password, current_password) == False:
-                error = 'Wrong password.'
+                error_message = 'Wrong password.'
+                error_type = 'WRONG_PASSWORD'
 
             password = generate_password_hash(password)
             changes['password'] = password
@@ -92,17 +100,20 @@ def update_user(username):
 
     if email is not None and validate_email(email) == False:
         error = 'Invalid email address.'
+        error_type = 'INVALID_EMAIL'
 
     if error is not None:
-        return make_response(jsonify({'error': error}), 400)
+        error = {'code': 400, 'error': error_type, 'message': error_message}
+        return make_response(jsonify(error), 400)
 
     try:
         db_client.update_user(username, changes)
     except:
-        return make_response(jsonify({'error': 'User update failed.'}), 400)
+        error = {'code': 400, 'error': 'BAD_REQUEST', 'message': 'User update failed.'}
+        return make_response(jsonify(error), 400)
     else:
-        return make_response(jsonify({'response': f'Updated user {username}.'}),
-            400)
+        success = {'message': f'Updated user {username}.'}
+        return make_response(jsonify(success), 200)
 
 
 @bp.route('/users/<username>', methods=['DELETE'])
@@ -111,4 +122,5 @@ def delete_user(username):
     # TODO: Check for valid auth token with decorator
     db_client.delete_user(username)
 
-    return make_response(jsonify({'response': f'Deleted user {username}.'}), 200)
+    success = {'message': f'Deleted user {username}.'}
+    return make_response(jsonify(success), 200)

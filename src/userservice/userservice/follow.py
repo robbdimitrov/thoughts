@@ -2,8 +2,7 @@ from flask import (
     Blueprint, request, make_response, jsonify
 )
 
-from userservice import db_client, status
-from userservice.db_client import DBException
+from userservice import db_client
 
 
 bp = Blueprint('follow', __name__)
@@ -40,7 +39,7 @@ def follow_user(username):
 
     try:
         db_client.follow_user(username, user_id)
-    except DBException as e:
+    except db_client.DBException as e:
         return make_response(jsonify({'error': str(e)}), status.BAD_REQUEST)
     else:
         return make_response(jsonify({'response': 'Followed user.'}), status.OK)
