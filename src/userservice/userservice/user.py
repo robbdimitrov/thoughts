@@ -5,8 +5,7 @@ from werkzeug.security import (
     generate_password_hash, check_password_hash
 )
 
-from userservice import status, db_client
-from userservice.db_client import DBException
+from userservice import db_client
 from userservice.helpers import validate_email
 
 
@@ -35,17 +34,17 @@ def create_user():
         error = None
 
     if error is not None:
-        return make_response(jsonify({'error': error}), status.BAD_REQUEST)
+        return make_response(jsonify({'error': error}), 400)
 
     password = generate_password_hash(password)
 
     try:
         db_client.create_user(username, email, name, password)
-    except DBException as e:
-        return make_response(jsonify({'error': str(e)}), status.BAD_REQUEST)
+    except db_client.DBException as e:
+        return make_response(jsonify({'error': str(e)}), 400)
     else:
         return make_response(jsonify({'response': f'Created user {username}.'}),
-            status.CREATED)
+            201)
 
 
 @bp.route('/users/<username>', methods=['GET'])
@@ -55,9 +54,9 @@ def get_user(username):
     user = db_client.get_user(username)
 
     if user is None:
-        return make_response(jsonify({'error': 'Not found.'}), status.NOT_FOUND)
+        return make_response(jsonify({'error': 'Not found.'}), 404)
 
-    return make_response(jsonify({'user': user}), status.OK)
+    return make_response(jsonify({'user': user}), 200)
 
 
 @bp.route('/users/<username>', methods=['PUT', 'UPDATE'])
@@ -95,17 +94,15 @@ def update_user(username):
         error = 'Invalid email address.'
 
     if error is not None:
-        return make_response(jsonify({'error': error}),
-            status.BAD_REQUEST)
+        return make_response(jsonify({'error': error}), 400)
 
     try:
         db_client.update_user(username, changes)
     except:
-        return make_response(jsonify({'error': 'User update failed.'}),
-            status.BAD_REQUEST)
+        return make_response(jsonify({'error': 'User update failed.'}), 400)
     else:
         return make_response(jsonify({'response': f'Updated user {username}.'}),
-            status.OK)
+            400)
 
 
 @bp.route('/users/<username>', methods=['DELETE'])
@@ -114,5 +111,4 @@ def delete_user(username):
     # TODO: Check for valid auth token with decorator
     db_client.delete_user(username)
 
-    return make_response(jsonify({'response': f'Deleted user {username}.'}),
-        status.OK)
+    return make_response(jsonify({'response': f'Deleted user {username}.'}), 200)
