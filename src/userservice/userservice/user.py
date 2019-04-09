@@ -47,8 +47,7 @@ def create_user():
         error = {'code': 400, 'error': 'BAD_REQUEST', 'message': str(e)}
         return make_response(jsonify(error), 400)
     else:
-        success = {'message': f'Created user {username}.'}
-        return make_response(jsonify(success), 201)
+        return make_response(jsonify({'message': f'Created user {username}.'}), 201)
 
 
 @bp.route('/users/<username>', methods=['GET'])
@@ -112,8 +111,7 @@ def update_user(username):
         error = {'code': 400, 'error': 'BAD_REQUEST', 'message': 'User update failed.'}
         return make_response(jsonify(error), 400)
     else:
-        success = {'message': f'Updated user {username}.'}
-        return make_response(jsonify(success), 200)
+        return make_response(jsonify({'message': f'Updated user {username}.'}), 200)
 
 
 @bp.route('/users/<username>', methods=['DELETE'])
@@ -122,5 +120,4 @@ def delete_user(username):
     # TODO: Check for valid auth token with decorator
     db_client.delete_user(username)
 
-    success = {'message': f'Deleted user {username}.'}
-    return make_response(jsonify(success), 200)
+    return make_response(jsonify({'message': f'Deleted user {username}.'}), 200)
