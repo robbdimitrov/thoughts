@@ -1,8 +1,8 @@
-import * as grpc from 'grpc';
+import * as grpc from "grpc";
 
-import * as services from '../genproto/thoughts_grpc_pb';
-import * as messages from '../genproto/thoughts_pb';
-import { APIClient } from './api-client';
+import * as services from "../genproto/thoughts_grpc_pb";
+import * as messages from "../genproto/thoughts_pb";
+import { APIClient } from "./api-client";
 
 export class AuthClient extends APIClient {
   constructor(grpcURI) {
@@ -32,9 +32,9 @@ export class AuthClient extends APIClient {
           return this.handleError(error, rej);
         }
         res({
-          'token_type': response.getTokenType(),
-          'access_token': response.getAccessToken(),
-          'refresh_token': response.getRefreshToken()
+          "token_type": response.getTokenType(),
+          "access_token": response.getAccessToken(),
+          "refresh_token": response.getRefreshToken()
         });
       });
     });
@@ -54,9 +54,9 @@ export class AuthClient extends APIClient {
           return this.handleError(error, rej);
         }
         res({
-          'token_type': response.getTokenType(),
-          'access_token': response.getAccessToken(),
-          'refresh_token': response.getRefreshToken()
+          "token_type": response.getTokenType(),
+          "access_token": response.getAccessToken(),
+          "refresh_token": response.getRefreshToken()
         });
       });
     });
@@ -76,11 +76,11 @@ export class AuthClient extends APIClient {
         let sessions = [];
         for (let item of response.getSessions()) {
           let session = {
-            'id': item.getId(),
-            'name': item.getName(),
-            'user_agent': item.getUserAgent(),
-            'user_id': item.getUserId(),
-            'date_created': item.getDateCreated()
+            "id": item.getId(),
+            "name": item.getName(),
+            "user_agent": item.getUserAgent(),
+            "user_id": item.getUserId(),
+            "date_created": item.getDateCreated()
           };
           sessions.push(session);
         }
@@ -103,7 +103,7 @@ export class AuthClient extends APIClient {
         if (error !== undefined) {
           return this.handleError(error, rej);
         }
-        res({'message': response.getMessage()});
+        res({"message": response.getMessage()});
       });
     });
   }

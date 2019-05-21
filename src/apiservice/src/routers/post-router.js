@@ -1,5 +1,5 @@
-import { APIRouter } from './api-router';
-import { getToken } from './utils';
+import { APIRouter } from "./api-router";
+import { getToken } from "./utils";
 
 export class PostRouter extends APIRouter {
   constructor(postClient) {
@@ -10,47 +10,47 @@ export class PostRouter extends APIRouter {
   connectRouter(router) {
     // Post
 
-    router.post('/', (req, res) => {
+    router.post("/", (req, res) => {
       this.createPost(req, res);
     });
 
-    router.get('/:id', (req, res) => {
+    router.get("/:id", (req, res) => {
       this.getPost(req, res);
     });
 
-    router.delete('/:id', (req, res) => {
+    router.delete("/:id", (req, res) => {
       this.deletePost(req, res);
     });
 
     // Posts    
 
-    router.get('/feed', (req, res) => {
+    router.get("/feed", (req, res) => {
       this.getFeed(req, res);
     });
 
-    router.get('/users/:username', (req, res) => {
+    router.get("/users/:username", (req, res) => {
       this.getPosts(req, res);
     });
 
-    router.get('/users/:username/likes', (req, res) => {
+    router.get("/users/:username/likes", (req, res) => {
       this.getLikedPosts(req, res);
     });
 
     // Actions
 
-    router.post('/:id/likes', (req, res) => {
+    router.post("/:id/likes", (req, res) => {
       this.likePost(req, res);
     });
 
-    router.delete('/:id/likes', (req, res) => {
+    router.delete("/:id/likes", (req, res) => {
       this.unlikePost(req, res);
     });
 
-    router.post('/:id/retweets', (req, res) => {
+    router.post("/:id/retweets", (req, res) => {
       this.likePost(req, res);
     });
 
-    router.delete('/:id/retweets', (req, res) => {
+    router.delete("/:id/retweets", (req, res) => {
       this.removeRetweet(req, res);
     });
   }

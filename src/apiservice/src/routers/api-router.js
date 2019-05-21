@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router } from "express";
 
 export class APIRouter {
   constructor() {
@@ -14,7 +14,7 @@ export class APIRouter {
     promise.then((result) => {
       res.send(result);
     }).catch((err) => {
-      let code = err['code'] !== undefined ? err.code : 500;
+      let code = err["code"] !== undefined ? err.code : 500;
       res.status(code).send(err);
     });
   }

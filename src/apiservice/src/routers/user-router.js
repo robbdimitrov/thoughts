@@ -1,5 +1,5 @@
-import { APIRouter } from './api-router';
-import { getToken } from './utils';
+import { APIRouter } from "./api-router";
+import { getToken } from "./utils";
 
 export class UserRouter extends APIRouter {
   constructor(userClient) {
@@ -10,37 +10,37 @@ export class UserRouter extends APIRouter {
   connectRouter(router) {
     // User
 
-    router.post('/', (req, res) => {
+    router.post("/", (req, res) => {
       this.createUser(req, res);
     });
 
-    router.get('/:id', (req, res) => {
+    router.get("/:id", (req, res) => {
       this.getUser(req, res);
     });
 
-    router.put('/:id', (req, res) => {
+    router.put("/:id", (req, res) => {
       this.updateUser(req, res);
     });
 
-    router.delete('/:id', (req, res) => {
+    router.delete("/:id", (req, res) => {
       this.deleteUser(req, res);
     });
 
     // Followers
 
-    router.get('/:id/following/', (req, res) => {
+    router.get("/:id/following/", (req, res) => {
       this.getFollowing(req, res);
     });
 
-    router.get('/:id/followers/', (req, res) => {
+    router.get("/:id/followers/", (req, res) => {
       this.getFollowers(req, res);
     });
 
-    router.post('/:id/followers/', (req, res) => {
+    router.post("/:id/followers/", (req, res) => {
       this.follow(req, res);
     });
 
-    router.delete('/:id/followers/:followerId', (req, res) => {
+    router.delete("/:id/followers/:followerId", (req, res) => {
       this.unfollow(req, res);
     });
   }

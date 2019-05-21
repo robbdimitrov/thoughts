@@ -1,8 +1,8 @@
-import * as grpc from 'grpc';
+import * as grpc from "grpc";
 
-import * as services from '../genproto/thoughts_grpc_pb';
-import * as messages from '../genproto/thoughts_pb';
-import { APIClient } from './api-client';
+import * as services from "../genproto/thoughts_grpc_pb";
+import * as messages from "../genproto/thoughts_pb";
+import { APIClient } from "./api-client";
 
 export class PostClient extends APIClient {
   constructor(grpcURI) {
@@ -32,10 +32,10 @@ export class PostClient extends APIClient {
         }
         let post = response.getPost();
         res({
-          'id': post.getId(),
-          'content': post.getContent(),
-          'user_id': post.getUserId(),
-          'date_created': post.getDateCreated()
+          "id": post.getId(),
+          "content": post.getContent(),
+          "user_id": post.getUserId(),
+          "date_created": post.getDateCreated()
         });
       });
     });
@@ -57,10 +57,10 @@ export class PostClient extends APIClient {
         }
         let post = response.getPost();
         res({
-          'id': post.getId(),
-          'content': post.getContent(),
-          'user_id': post.getUserId(),
-          'date_created': post.getDateCreated()
+          "id": post.getId(),
+          "content": post.getContent(),
+          "user_id": post.getUserId(),
+          "date_created": post.getDateCreated()
         });
       });
     });
@@ -87,10 +87,10 @@ export class PostClient extends APIClient {
         let posts = [];
         for (let item of response.getPosts()) {
           let post = {
-            'id': item.getId(),
-            'content': item.getContent(),
-            'user_id': item.getUserId(),
-            'date_created': item.getDateCreated()
+            "id": item.getId(),
+            "content": item.getContent(),
+            "user_id": item.getUserId(),
+            "date_created": item.getDateCreated()
           };
           posts.push(post);
         }
@@ -121,10 +121,10 @@ export class PostClient extends APIClient {
         let posts = [];
         for (let item of response.getPosts()) {
           let post = {
-            'id': item.getId(),
-            'content': item.getContent(),
-            'user_id': item.getUserId(),
-            'date_created': item.getDateCreated()
+            "id": item.getId(),
+            "content": item.getContent(),
+            "user_id": item.getUserId(),
+            "date_created": item.getDateCreated()
           };
           posts.push(post);
         }
@@ -155,10 +155,10 @@ export class PostClient extends APIClient {
         let posts = [];
         for (let item of response.getPosts()) {
           let post = {
-            'id': item.getId(),
-            'content': item.getContent(),
-            'user_id': item.getUserId(),
-            'date_created': item.getDateCreated()
+            "id": item.getId(),
+            "content": item.getContent(),
+            "user_id": item.getUserId(),
+            "date_created": item.getDateCreated()
           };
           posts.push(post);
         }
@@ -181,7 +181,7 @@ export class PostClient extends APIClient {
         if (error !== undefined) {
           return this.handleError(error, rej);
         }
-        res({'message': response.getMessage()});
+        res({"message": response.getMessage()});
       });
     });
   }
@@ -202,7 +202,7 @@ export class PostClient extends APIClient {
         if (error !== undefined) {
           return this.handleError(error, rej);
         }
-        res({'message': response.getMessage()});
+        res({"message": response.getMessage()});
       });
     });
   }
@@ -221,7 +221,7 @@ export class PostClient extends APIClient {
         if (error !== undefined) {
           return this.handleError(error, rej);
         }
-        res({'message': response.getMessage()});
+        res({"message": response.getMessage()});
       });
     });
   }
@@ -240,7 +240,7 @@ export class PostClient extends APIClient {
         if (error !== undefined) {
           return this.handleError(error, rej);
         }
-        res({'message': response.getMessage()});
+        res({"message": response.getMessage()});
       });
     });
   }
@@ -259,7 +259,7 @@ export class PostClient extends APIClient {
         if (error !== undefined) {
           return this.handleError(error, rej);
         }
-        res({'message': response.getMessage()});
+        res({"message": response.getMessage()});
       });
     });
   }
