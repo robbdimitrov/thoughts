@@ -1,19 +1,19 @@
-import React from 'react';
-import { Route, Redirect, Switch } from 'react-router-dom';
+import React from "react";
+import { Route, Redirect, Switch } from "react-router-dom";
 
-import SettingsMenu from './settingsmenu/SettingsMenu';
-import './Settings.scss';
+import SettingsMenu from "./settingsmenu/SettingsMenu";
+import "./Settings.scss";
 
-const Password = React.lazy(() => import('./Password'));
-const EditProfile = React.lazy(() => import('./EditProfile'));
-const Sessions = React.lazy(() => import('./sessions/Sessions'));
+const Password = React.lazy(() => import("./Password"));
+const EditProfile = React.lazy(() => import("./EditProfile"));
+const Sessions = React.lazy(() => import("./sessions/Sessions"));
 
 function Settings({ match }) {
   return (
-    <div className='settings-container'>
+    <div className="settings-container">
       <SettingsMenu />
 
-      <div className='settings-content main-content'>
+      <div className="settings-content main-content">
         <Switch>
           <Route path={`${match.path}/account`} exact component={EditProfile} />
           <Route path={`${match.path}/password`} exact component={Password} />

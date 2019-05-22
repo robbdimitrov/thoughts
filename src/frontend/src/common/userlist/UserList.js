@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import UserItem from './UserItem';
-import './UserList.scss';
+import UserItem from "./UserItem";
+import "./UserList.scss";
 
 function UserList(props) {
   return (
-    <ul className='user-list'>
+    <ul className="user-list">
       {[...Array(props.items).keys()].map((item) =>
         <UserItem
           key={item.toString()}

@@ -1,12 +1,12 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import './ThoughtBox.scss';
+import "./ThoughtBox.scss";
 
 class ThoughtBox extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: '', maxLength: 140};
+    this.state = {value: "", maxLength: 140};
   }
 
   handleChange = (event) => {
@@ -19,9 +19,9 @@ class ThoughtBox extends React.Component {
   };
 
   couterClassName = () => {
-    let className = 'thought-box-counter';
+    let className = "thought-box-counter";
     if (this.state.value.length > this.state.maxLength) {
-      className += ' invalid';
+      className += " invalid";
     }
     return className;
   };
@@ -34,32 +34,32 @@ class ThoughtBox extends React.Component {
 
   render() {
     return (
-      <form className='thought-box' onSubmit={this.handleSubmit}>
-        <div className='thought-box-header'>
-          <button className='close-button' onClick={this.props.closePopup}>
-            <FontAwesomeIcon icon='times' />
+      <form className="thought-box" onSubmit={this.handleSubmit}>
+        <div className="thought-box-header">
+          <button className="close-button" onClick={this.props.closePopup}>
+            <FontAwesomeIcon icon="times" />
           </button>
 
           <input
-            type='submit'
-            className='button submit-button'
+            type="submit"
+            className="button submit-button"
             disabled={!this.isPostValid()}
-            value='Create'
+            value="Create"
           />
         </div>
 
-        <div className='thought-box-content'>
+        <div className="thought-box-content">
           <img
-            className='avatar'
-            src='https://via.placeholder.com/300.png'
-            alt={'User\'s name'}
+            className="avatar"
+            src="https://via.placeholder.com/300.png"
+            alt={"User\"s name"}
           />
 
           <textarea
-            className='form-input'
-            type='text'
-            name='thought'
-            placeholder='What are you thinking?'
+            className="form-input"
+            type="text"
+            name="thought"
+            placeholder="What are you thinking?"
             value={this.state.value}
             onChange={this.handleChange}
             required

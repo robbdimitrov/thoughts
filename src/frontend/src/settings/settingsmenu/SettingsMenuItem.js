@@ -1,13 +1,13 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
-import './SettingsMenuItem.scss';
+import "./SettingsMenuItem.scss";
 
 function SettingsMenuItem(props) {
   return (
-    <li className='settings-menu-item'>
-      <NavLink to={`/settings/${props.link}`} className='settings-menu-button'>
-        <span className='settings-menu-item-title'>
+    <li className="settings-menu-item">
+      <NavLink to={`/settings/${props.link}`} className="settings-menu-button">
+        <span className="settings-menu-item-title">
           {props.title}
         </span>
       </NavLink>

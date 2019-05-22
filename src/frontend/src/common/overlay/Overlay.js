@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import './Overlay.scss';
+import "./Overlay.scss";
 
 function Overlay(props) {
   return (
-    <div className='overlay'>
+    <div className="overlay">
       {props.children}
     </div>
   );

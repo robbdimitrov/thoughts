@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import ThoughtItem from './ThoughtItem';
+import ThoughtItem from "./ThoughtItem";
 
-import './ThoughtList.scss';
+import "./ThoughtList.scss";
 
 function ThoughtList(props) {
   return (
-    <ul className='thought-list'>
+    <ul className="thought-list">
       {[...Array(props.items).keys()].map((item) =>
         <ThoughtItem
           key={item.toString()}

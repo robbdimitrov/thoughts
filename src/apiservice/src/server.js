@@ -1,13 +1,13 @@
-import * as bodyParser from 'body-parser';
-import * as express from 'express';
-import * as helmet from 'helmet';
+import * as bodyParser from "body-parser";
+import * as express from "express";
+import * as helmet from "helmet";
 
-import { AuthClient } from './clients/auth-client';
-import { PostClient } from './clients/post-client';
-import { UserClient } from './clients/user-client';
-import { AuthRouter } from './routers/auth-router';
-import { PostRouter } from './routers/post-router';
-import { UserRouter } from './routers/user-router';
+import { AuthClient } from "./clients/auth-client";
+import { PostClient } from "./clients/post-client";
+import { UserClient } from "./clients/user-client";
+import { AuthRouter } from "./routers/auth-router";
+import { PostRouter } from "./routers/post-router";
+import { UserRouter } from "./routers/user-router";
 
 export class Server {
   constructor(port, apiRoot) {
@@ -41,17 +41,17 @@ export class Server {
 
   // Create API routers
   configureRouters() {
-    let authClient = new AuthClient(this.config['AUTH_URI']);
+    let authClient = new AuthClient(this.config["AUTH_URI"]);
     let authRouter = new AuthRouter(authClient);
-    this.routers['sessions'] = authRouter;
+    this.routers["sessions"] = authRouter;
 
-    let userClient = new UserClient(this.config['USER_URI']);
+    let userClient = new UserClient(this.config["USER_URI"]);
     let userRouter = new UserRouter(userClient);
-    this.routers['users'] = userRouter;
+    this.routers["users"] = userRouter;
 
-    let postClient = new PostClient(this.config['POST_URI']);
+    let postClient = new PostClient(this.config["POST_URI"]);
     let postRouter = new PostRouter(postClient);
-    this.routers['posts'] = postRouter;
+    this.routers["posts"] = postRouter;
   }
 
   // Configure API endpoints
