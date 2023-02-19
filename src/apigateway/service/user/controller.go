@@ -1,30 +1,33 @@
-package api
+package user
 
 import (
 	"context"
 	"log"
+	"net/http"
 	"strconv"
 	"time"
 
-	"github.com/labstack/echo/v4"
 	"google.golang.org/grpc"
 
+	"github.com/labstack/echo/v4"
 	pb "github.com/robbdimitrov/thoughts/src/apigateway/genproto"
+	"github.com/robbdimitrov/thoughts/src/apigateway/service/utils"
 )
 
-type userController struct {
+type Controller struct {
 	addr string
 }
 
-func newUserController(addr string) *userController {
-	return &userController{addr}
+func NewController(addr string) *Controller {
+	return &Controller{addr: addr}
 }
 
-func (s *userController) createUser(c echo.Context) error {
-	conn, err := grpc.Dial(s.addr, insecureCredentials(), grpc.WithBlock())
+func (s *Controller) createUser(w http.ResponseWriter, r *http.Request) {
+	conn, err := grpc.Dial(s.addr, utils.InsecureCredentials(), grpc.WithBlock())
 	if err != nil {
 		log.Printf("Connecting to service failed: %v", err)
-		return echo.NewHTTPError(500)
+		// utils.ToHTTPError(http.StatusInternalServerError)
+		return
 	}
 	defer conn.Close()
 	client := pb.NewUserServiceClient(conn)
@@ -33,23 +36,24 @@ func (s *userController) createUser(c echo.Context) error {
 	defer cancel()
 
 	req := pb.CreateUserRequest{
-		Name:     c.FormValue("name"),
-		Username: c.FormValue("username"),
-		Email:    c.FormValue("email"),
-		Password: c.FormValue("password"),
+		// Name:     c.FormValue("name"),
+		// Username: c.FormValue("username"),
+		// Email:    c.FormValue("email"),
+		// Password: c.FormValue("password"),
 	}
 
-	res, err := client.CreateUser(ctx, &req)
+	_, err = client.CreateUser(ctx, &req)
 	if err != nil {
 		log.Printf("Creating user failed: %v", err)
-		return newHTTPError(err)
+		utils.ToHTTPError(err)
+		return
 	}
 
-	return c.JSON(201, map[string]int32{"id": res.Id})
+	// return c.JSON(201, map[string]int32{"id": res.Id})
 }
 
-func (s *userController) getUser(c echo.Context) error {
-	conn, err := grpc.Dial(s.addr, insecureCredentials(), grpc.WithBlock())
+func (s *Controller) getUser(w http.ResponseWriter, r *http.Request) {
+	conn, err := grpc.Dial(s.addr, utils.InsecureCredentials(), grpc.WithBlock())
 	if err != nil {
 		log.Printf("Connecting to service failed: %v", err)
 		return echo.NewHTTPError(500)
@@ -71,14 +75,14 @@ func (s *userController) getUser(c echo.Context) error {
 	res, err := client.GetUser(ctx, &req)
 	if err != nil {
 		log.Printf("Getting user failed: %v", err)
-		return newHTTPError(err)
+		return utils.ToHTTPError(err)
 	}
 
 	return c.JSON(200, mapUser(res))
 }
 
-func (s *userController) updateUser(c echo.Context) error {
-	conn, err := grpc.Dial(s.addr, insecureCredentials(), grpc.WithBlock())
+func (s *Controller) updateUser(w http.ResponseWriter, r *http.Request) {
+	conn, err := grpc.Dial(s.addr, utils.InsecureCredentials(), grpc.WithBlock())
 	if err != nil {
 		log.Printf("Connecting to service failed: %v", err)
 		return echo.NewHTTPError(500)
@@ -109,10 +113,10 @@ func (s *userController) updateUser(c echo.Context) error {
 		return newHTTPError(err)
 	}
 
-	return c.NoContent(204)
+	return c.NoContent(http.StatusNoContent)
 }
 
-func (s *userController) getFollowing(c echo.Context) error {
+func (s *Controller) getFollowing(w http.ResponseWriter, r *http.Request) {
 	conn, err := grpc.Dial(s.addr, insecureCredentials(), grpc.WithBlock())
 	if err != nil {
 		log.Printf("Connecting to service failed: %v", err)
@@ -158,7 +162,7 @@ func (s *userController) getFollowing(c echo.Context) error {
 	return c.JSON(200, map[string][]user{"items": users})
 }
 
-func (s *userController) getFollowers(c echo.Context) error {
+func (s *Controller) getFollowers(w http.ResponseWriter, r *http.Request) {
 	conn, err := grpc.Dial(s.addr, insecureCredentials(), grpc.WithBlock())
 	if err != nil {
 		log.Printf("Connecting to service failed: %v", err)
@@ -204,58 +208,64 @@ func (s *userController) getFollowers(c echo.Context) error {
 	return c.JSON(200, map[string][]user{"items": users})
 }
 
-func (s *userController) followUser(c echo.Context) error {
-	conn, err := grpc.Dial(s.addr, insecureCredentials(), grpc.WithBlock())
+func (s *Controller) followUser(w http.ResponseWriter, r *http.Request) {
+	conn, err := grpc.Dial(s.addr, utils.InsecureCredentials(), grpc.WithBlock())
 	if err != nil {
 		log.Printf("Connecting to service failed: %v", err)
-		return echo.NewHTTPError(500)
+		// echo.NewHTTPError(http.StatusInternalServerError)
+		return
 	}
 	defer conn.Close()
 	client := pb.NewUserServiceClient(conn)
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	ctx = appendUserIDHeader(ctx, c)
+	// ctx = appendUserIDHeader(ctx, c)
 	defer cancel()
 
 	userID, err := strconv.Atoi(c.Param("userId"))
 	if err != nil {
-		return echo.NewHTTPError(400)
+		// echo.NewHTTPError(http.StatusBadRequest)
+		return
 	}
 	req := pb.UserRequest{UserId: int32(userID)}
 
 	_, err = client.FollowUser(ctx, &req)
 	if err != nil {
 		log.Printf("Following user failed: %v", err)
-		return newHTTPError(err)
+		// newHTTPError(err)
+		return
 	}
 
-	return c.NoContent(204)
+	return c.NoContent(http.StatusNoContent)
 }
 
-func (s *userController) unfollowUser(c echo.Context) error {
-	conn, err := grpc.Dial(s.addr, insecureCredentials(), grpc.WithBlock())
+func (s *Controller) unfollowUser(w http.ResponseWriter, r *http.Request) {
+	conn, err := grpc.Dial(s.addr, utils.InsecureCredentials(), grpc.WithBlock())
 	if err != nil {
 		log.Printf("Connecting to service failed: %v", err)
-		return echo.NewHTTPError(500)
+		// echo.NewHTTPError(http.StatusInternalServerError)
+		return
 	}
 	defer conn.Close()
 	client := pb.NewUserServiceClient(conn)
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	ctx = appendUserIDHeader(ctx, c)
+	// ctx = appendUserIDHeader(ctx, c)
 	defer cancel()
 
 	userID, err := strconv.Atoi(c.Param("userId"))
 	if err != nil {
-		return echo.NewHTTPError(400)
+		echo.NewHTTPError(http.StatusBadRequest)
+		return
 	}
 	req := pb.UserRequest{UserId: int32(userID)}
 
 	_, err = client.UnfollowUser(ctx, &req)
 	if err != nil {
 		log.Printf("Unfollowing user failed: %v", err)
-		return newHTTPError(err)
+		utils.ToHTTPError(err)
+		return
 	}
 
-	return c.NoContent(204)
+	// return c.NoContent(http.StatusNoContent)
 }

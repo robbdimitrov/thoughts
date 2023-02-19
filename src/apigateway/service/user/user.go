@@ -1,4 +1,6 @@
-package api
+package user
+
+import pb "github.com/robbdimitrov/thoughts/src/apigateway/genproto"
 
 type user struct {
 	ID        int32  `json:"id"`
@@ -14,13 +16,18 @@ type user struct {
 	Created   string `json:"created"`
 }
 
-type post struct {
-	ID       int32  `json:"id"`
-	UserID   int32  `json:"userId"`
-	Content  string `json:"content"`
-	Likes    int32  `json:"likes"`
-	Liked    bool   `json:"liked"`
-	Reposts  int32  `json:"reposts"`
-	Reposted bool   `json:"reposted"`
-	Created  string `json:"created"`
+func newUser(u *pb.User) user {
+	return user{
+		ID:        u.Id,
+		Name:      u.Name,
+		Username:  u.Username,
+		Email:     u.Email,
+		Bio:       u.Bio,
+		Posts:     u.Posts,
+		Likes:     u.Likes,
+		Following: u.Following,
+		Followers: u.Followers,
+		Followed:  u.Followed,
+		Created:   u.Created,
+	}
 }

@@ -3,8 +3,8 @@ WORKDIR /usr/src/app
 COPY go.* .
 RUN go mod download
 COPY . .
-RUN go build -v -o service
+RUN go build -v -o apigateway
 
 FROM scratch
-COPY --from=builder /usr/src/app/service /service
-CMD ["/service"]
+COPY --from=builder /usr/src/app/apigateway /apigateway
+CMD ["/apigateway"]

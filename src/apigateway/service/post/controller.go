@@ -1,8 +1,9 @@
-package api
+package post
 
 import (
 	"context"
 	"log"
+	"net/http"
 	"strconv"
 	"time"
 
@@ -10,17 +11,18 @@ import (
 	"google.golang.org/grpc"
 
 	pb "github.com/robbdimitrov/thoughts/src/apigateway/genproto"
+	"github.com/robbdimitrov/thoughts/src/apigateway/service/utils"
 )
 
-type postController struct {
+type Controller struct {
 	addr string
 }
 
-func newPostController(addr string) *postController {
-	return &postController{addr}
+func NewController(addr string) *Controller {
+	return &Controller{addr}
 }
 
-func (pc *postController) createPost(c echo.Context) error {
+func (pc *Controller) CreatePost(w http.ResponseWriter, r *http.Request) {
 	conn, err := grpc.Dial(pc.addr, insecureCredentials(), grpc.WithBlock())
 	if err != nil {
 		log.Printf("Connecting to service failed: %v", err)
@@ -44,7 +46,7 @@ func (pc *postController) createPost(c echo.Context) error {
 	return c.JSON(201, map[string]int32{"id": res.Id})
 }
 
-func (pc *postController) getFeed(c echo.Context) error {
+func (pc *Controller) getFeed(w http.ResponseWriter, r *http.Request) error {
 	conn, err := grpc.Dial(pc.addr, insecureCredentials(), grpc.WithBlock())
 	if err != nil {
 		log.Printf("Connecting to service failed: %v", err)
@@ -85,7 +87,7 @@ func (pc *postController) getFeed(c echo.Context) error {
 	return c.JSON(200, map[string][]post{"items": posts})
 }
 
-func (pc *postController) getPosts(c echo.Context) error {
+func (pc *Controller) getPosts(w http.ResponseWriter, r *http.Request) error {
 	conn, err := grpc.Dial(pc.addr, insecureCredentials(), grpc.WithBlock())
 	if err != nil {
 		log.Printf("Connecting to service failed: %v", err)
@@ -131,7 +133,7 @@ func (pc *postController) getPosts(c echo.Context) error {
 	return c.JSON(200, map[string][]post{"items": posts})
 }
 
-func (pc *postController) getLikedPosts(c echo.Context) error {
+func (pc *postController) getLikedPosts(w http.ResponseWriter, r *http.Request) error {
 	conn, err := grpc.Dial(pc.addr, insecureCredentials(), grpc.WithBlock())
 	if err != nil {
 		log.Printf("Connecting to service failed: %v", err)
@@ -177,7 +179,7 @@ func (pc *postController) getLikedPosts(c echo.Context) error {
 	return c.JSON(200, map[string][]post{"items": posts})
 }
 
-func (pc *postController) getPost(c echo.Context) error {
+func (pc *postController) getPost(w http.ResponseWriter, r *http.Request) error {
 	conn, err := grpc.Dial(pc.addr, insecureCredentials(), grpc.WithBlock())
 	if err != nil {
 		log.Printf("Connecting to service failed: %v", err)
@@ -261,11 +263,11 @@ func (pc *postController) likePost(c echo.Context) error {
 	return c.NoContent(204)
 }
 
-func (pc *postController) unlikePost(c echo.Context) error {
-	conn, err := grpc.Dial(pc.addr, insecureCredentials(), grpc.WithBlock())
+func (pc *Controller) unlikePost(w http.ResponseWriter, r *http.Request) {
+	conn, err := grpc.Dial(pc.addr, utils.InsecureCredentials(), grpc.WithBlock())
 	if err != nil {
 		log.Printf("Connecting to service failed: %v", err)
-		return echo.NewHTTPError(500)
+		return utils.ToHTTPError(http.StatusInternalServerError)
 	}
 	defer conn.Close()
 	client := pb.NewPostServiceClient(conn)
@@ -289,7 +291,7 @@ func (pc *postController) unlikePost(c echo.Context) error {
 	return c.NoContent(204)
 }
 
-func (pc *postController) repostPost(c echo.Context) error {
+func (pc *Controller) repostPost(w http.ResponseWriter, r *http.Request) {
 	conn, err := grpc.Dial(pc.addr, insecureCredentials(), grpc.WithBlock())
 	if err != nil {
 		log.Printf("Connecting to service failed: %v", err)
@@ -317,7 +319,7 @@ func (pc *postController) repostPost(c echo.Context) error {
 	return c.NoContent(204)
 }
 
-func (pc *postController) removeRepost(c echo.Context) error {
+func (pc *Controller) removeRepost(w http.ResponseWriter, r *http.Request) {
 	conn, err := grpc.Dial(pc.addr, insecureCredentials(), grpc.WithBlock())
 	if err != nil {
 		log.Printf("Connecting to service failed: %v", err)

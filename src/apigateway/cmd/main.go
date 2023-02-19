@@ -8,7 +8,7 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/robbdimitrov/thoughts/src/apigateway/api"
+	"github.com/robbdimitrov/thoughts/src/apigateway/service"
 )
 
 func main() {
@@ -19,12 +19,13 @@ func main() {
 	authAddr := os.Getenv("AUTH_SERVICE_ADDR")
 	postAddr := os.Getenv("POST_SERVICE_ADDR")
 	userAddr := os.Getenv("USER_SERVICE_ADDR")
+	addr := fmt.Sprintf(":%s", port)
 
-	server := api.CreateServer(authAddr, postAddr, userAddr)
+	server := service.NewServer(addr, authAddr, postAddr, userAddr)
 
 	go func() {
 		log.Printf("Server is starting on port %s", port)
-		if err := server.Start(fmt.Sprintf(":%s", port)); err != nil {
+		if err := server.Start(); err != nil {
 			log.Fatal(err)
 		}
 	}()
