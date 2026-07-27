@@ -29,6 +29,6 @@ export const POST = async (event) => {
     .filter((id): id is number => typeof id === "number")
     .slice(0, MAX_MARK_READ_IDS);
   const api = apiClient(event);
-  void Promise.allSettled(ids.map((id) => markNotificationRead(api, id)));
+  await Promise.allSettled(ids.map((id) => markNotificationRead(api, id)));
   return json({ success: true });
 };
