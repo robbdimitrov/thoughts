@@ -228,10 +228,12 @@ falling back to the empty-query message if there are no popular posts.
 
 Each row's avatar carries a small circular badge overlaid on its bottom-right
 corner, color-coded by notification type using the same semantic colors as
-`PostItem`'s action bar: `like` → `Heart` (`bg-error/20 text-error`), `repost`
-→ `Repeat` (`bg-success/20 text-success`), `reply` → `MessageSquare`
-(`bg-primary/20 text-primary`), `follow` → `UserPlus` (`bg-secondary/20
-text-secondary`). An unrecognized type falls back to a neutral `Bell` badge
+`PostItem`'s action bar: `like` → `Heart` (`bg-error text-error-content`),
+`repost` → `Repeat` (`bg-success text-success-content`), `reply` →
+`MessageSquare` (`bg-primary text-primary-content`), `follow` → `UserPlus`
+(`bg-secondary text-secondary-content`). Badges use a solid fill rather than
+a translucent tint, which read as barely visible over the avatar underneath.
+An unrecognized type falls back to a neutral `Bell` badge
 (`bg-base-200 text-base-content`). The badge has a `border-base-100`/
 `dark:border-base-200` ring so it reads as a cutout against the card surface,
 matching `Avatar`'s own ring treatment on the notifications list.
