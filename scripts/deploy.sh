@@ -427,6 +427,7 @@ apply_broker_infra_manifest() {
 data_resource_checksum() {
   local kind="$1"
   local name="$2"
+  # shellcheck disable=SC2016 # go-template variables must reach kubectl literally.
   kubectl -n "${NS}" get "${kind}" "${name}" -o go-template='{{ range $k, $v := .data }}{{ printf "%s=%s\n" $k $v }}{{ end }}' \
     | LC_ALL=C sort \
     | openssl dgst -sha256 -r | awk '{print $1}'
@@ -589,6 +590,7 @@ start_port_forward_background() {
   fi
 
   log "starting frontend port-forward in the background"
+  # shellcheck disable=SC2016 # The child shell expands env passed through env.
   LOCAL_PORT="${LOCAL_PORT}" REMOTE_PORT="${REMOTE_PORT}" NS="${NS}" \
     nohup bash -c '
     set -u

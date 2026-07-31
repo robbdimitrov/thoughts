@@ -30,5 +30,7 @@ check_deployment userservice
 check_deployment postservice
 check_deployment imageservice
 check_deployment flowservice
+check_deployment connect
+check_deployment frontend
 
 echo "dependency restart drill completed for namespace $namespace"

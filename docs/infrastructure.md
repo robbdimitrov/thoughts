@@ -293,9 +293,9 @@ trigger a full reindex by running the `broker-backfill` Job.
 
 Run `scripts/failure-drill.sh` after changing dependency clients, probes, or
 consumer loops. The script restarts PostgreSQL, cache, broker, search, and
-storage workloads, then waits for API, backend, and flow deployments to remain
-rolled out. Override the namespace and wait budget with `NAMESPACE=...` and
-`TIMEOUT=...`.
+storage workloads, then waits for application, connect, and frontend deployments
+to remain rolled out. Override the namespace and wait budget with
+`NAMESPACE=...` and `TIMEOUT=...`.
 
 Long-lived database, HTTP, and gRPC clients must keep explicit connection
 lifetimes, idle limits, keepalive, and reconnect backoff. Flow consumers log
